@@ -16,6 +16,54 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
+    id: "ashwini-kurup",
+    title: "Ashwini R. Kurup — Designer & Entrepreneur Portfolio",
+    subtitle: "Sustainable Craft Storytelling & Ventures Showcase",
+    category: "Personal Brand",
+    type: "frontend",
+    challenge:
+      "Presenting a multi-venture designer profile — spanning artisan collaborations, sustainable product lines, and workshop offerings — inside a single narrative surface without diluting brand craft or fragmenting the reader's journey across sections.",
+    architecture: [
+      "Content Structure: Modeled distinct surfaces for About, Work, Collections, Workshops, and Contact so each venture reads as a first-class story rather than a nested footnote.",
+      "Editorial UI: Paired minimalist typography with high-fidelity photography and image-optimized Next.js pipelines to keep the craft aesthetic sharp on every viewport.",
+    ],
+    outcome:
+      "Delivered a calm, editorial personal brand hub that converts curious visitors into newsletter subscribers and workshop leads while anchoring multiple ventures under one authentic voice.",
+    tags: [
+      "Next.js",
+      "Editorial Layout",
+      "Image Optimization",
+      "Responsive Design",
+    ],
+    liveUrl: "https://ashiwinirkurup.vercel.app/",
+    image:
+      "https://api.microlink.io/?url=https%3A%2F%2Fashiwinirkurup.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=800",
+  },
+  {
+    id: "kore-digital",
+    title: "Kore Digital — Infrastructure Investor Surface",
+    subtitle: "NSE-Listed Deep-Tech Corporate & IR Portal",
+    category: "Corporate / IR",
+    type: "frontend",
+    challenge:
+      "Translating a multi-pillar infrastructure conglomerate — fiber backbone, AI compute, datacenters, 3D printing, aerospace — into a single credible surface that serves both institutional investors and enterprise partners without turning into a wall of disclosures.",
+    architecture: [
+      "Narrative Layout: Structured discrete pillars (Fiber, Compute, Datacenter, 3D Printing, Aerospace) as scannable modules so each business line carries its own scale metrics and CTA path.",
+      "Trust Signals: Foregrounded NSE ticker, SEBI/NSE compliance markers, and pipeline order metrics with restrained typography to reinforce regulatory credibility over marketing gloss.",
+    ],
+    outcome:
+      "Shipped an institutional-grade corporate site that positions Kore Digital as a serious infrastructure operator, streamlines investor-relations discovery, and holds up under the scrutiny expected of a listed entity.",
+    tags: [
+      "Next.js",
+      "Corporate IR",
+      "Metric-Driven Layout",
+      "Accessible Typography",
+    ],
+    liveUrl: "https://kore-digital-wine.vercel.app/",
+    image:
+      "https://api.microlink.io/?url=https%3A%2F%2Fkore-digital-wine.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=800",
+  },
+  {
     id: "ashirwaad",
     title: "Ashirwaad Corporate Presence Portal",
     subtitle: "Enterprise Business Infrastructure & Frontend Interface",
@@ -41,22 +89,22 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "monica-hirano",
-    title: "Curated International Artist Showcase",
-    subtitle: "High-End Visual Portfolio & Dynamic Layout Engine",
+    title: "Monica Hirano — Contemporary Artist Portfolio",
+    subtitle: "Trilingual Institutional-Grade Visual Portfolio",
     category: "Visual Portfolio",
     type: "frontend",
     challenge:
-      "Developing an immersive, image-heavy digital exhibition space for a global artist curation brand without sacrificing initial page load speeds or breaking layout fluidities across varying device breakpoints.",
+      "Housing a decade of contemporary art — installations, video, performance, and collaborative works — inside a single portfolio that satisfies galleries, curators, and international press simultaneously, without turning an image-heavy archive into a slow, cluttered scroll.",
     architecture: [
-      "Asset Pipeline: Implemented rigorous modern image optimization (WebP/AVIF conversions) and asynchronous lazy-loading mechanisms to keep First Contentful Paint (FCP) under 1.2s.",
-      "Layout UX: Engineered a highly fluid, responsive grid framework designed to handle asymmetric design elements cleanly across mobile, tablet, and ultra-wide desktop monitors.",
+      "Content Architecture: Separated Artwork, Projects, Art Direction, Text, Info, and Press into distinct routes so each reader intent (buyer vs. curator vs. press) finds its entry point immediately.",
+      "Asset Pipeline: Next.js image optimization with responsive variants for gallery scrolling; multilingual metadata (Portuguese, French, Italian) baked into work titles for direct press quotation.",
     ],
     outcome:
-      "Delivered a premium digital presence that balances heavy visual storytelling with lightning-fast performance, matching the luxury aesthetic expected by global art clientele.",
-    tags: ["React", "Tailwind CSS", "High-Performance UI", "Responsive Design"],
-    liveUrl: "https://monica-hirano-portfolio.vercel.app/",
+      "Delivered a calm, institutional-grade portfolio surfacing 12 individual artworks and 13 collaborative projects (2019–2025) — fast on image-heavy pages and credible enough to stand behind gallery submissions and press pitches.",
+    tags: ["Next.js", "Editorial Layout", "Image Optimization", "Multilingual"],
+    liveUrl: "https://www.monicahirano.com/",
     image:
-      "https://api.microlink.io/?url=https%3A%2F%2Fmonica-hirano-portfolio.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=800",
+      "https://api.microlink.io/?url=https%3A%2F%2Fwww.monicahirano.com%2F&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=800",
   },
   {
     id: "concept-abc",
@@ -80,8 +128,8 @@ export const PROJECTS: Project[] = [
   {
     id: "nutrileads",
     title: "NutriLeads Engine",
-    subtitle: "Governance-First Agentic Discovery Engine",
-    category: "Agentic AI",
+    subtitle: "Governance-First Agentic Discovery Engine (Personal R&D)",
+    category: "Personal R&D · Agentic AI",
     type: "flagship",
     challenge:
       "Raw web data is highly fragmented, unstable, and protected by aggressive bot mitigation. Standard AI implementations frequently expose high-cost API keys in frontends, risking catastrophic financial leaks.",
@@ -107,8 +155,8 @@ export const PROJECTS: Project[] = [
   {
     id: "token-optimizer",
     title: "AI Token & Cost Optimizer",
-    subtitle: "Custom Observability Middleware Layer",
-    category: "Observability",
+    subtitle: "Custom Observability Middleware (Personal R&D)",
+    category: "Personal R&D · Observability",
     type: "flagship",
     challenge:
       "Unmonitored agent loops generate massive API overhead, offering zero cost-per-request tracking or performance visibility for enterprise stakeholders.",
@@ -128,8 +176,8 @@ export const PROJECTS: Project[] = [
   {
     id: "retail-interface",
     title: "High-Concurrency Retail Interface",
-    subtitle: "Real-Time State & Data Visualization Hub",
-    category: "Real-time UI",
+    subtitle: "Real-Time State & Data Visualization Hub (Personal R&D)",
+    category: "Personal R&D · Real-time UI",
     type: "frontend",
     challenge:
       "Handling rapid, multi-source API data streams without blocking the main UI thread or causing erratic component re-renders on low-end mobile devices.",
@@ -145,33 +193,38 @@ export const PROJECTS: Project[] = [
 
 export const SKILL_TIERS: { title: string; items: string[] }[] = [
   {
-    title: "Orchestration & AI",
-    items: ["TypeScript", "Node.js", "LangGraph", "Playwright / Puppeteer"],
+    title: "Frontend & App",
+    items: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
   },
   {
-    title: "Security & Backend",
-    items: ["Java", "Spring Boot", "Microservices", "Infisical / Vault"],
+    title: "Backend & Data",
+    items: ["Java", "Spring Boot", "Node.js", "PostgreSQL / Supabase"],
   },
   {
-    title: "Data & UI",
-    items: ["React", "Tailwind CSS", "Shadcn/UI", "Supabase / Postgres"],
-  },
-  {
-    title: "Observability",
+    title: "AI Integration",
     items: [
-      "Axiom",
-      "Structured Telemetry",
-      "Performance Profiling",
-      "Anomaly Alerting",
+      "OpenAI / Anthropic",
+      "LangChain",
+      "RAG Patterns",
+      "Cost & Eval Dashboards",
+    ],
+  },
+  {
+    title: "Delivery",
+    items: [
+      "Vercel",
+      "Core Web Vitals",
+      "Structured Logging",
+      "14-Day Bugfix Window",
     ],
   },
 ];
 
 export const RIBBON_METRICS: { label: string; value: string }[] = [
-  { label: "Leads Discovered via AI", value: "15k+" },
-  { label: "Security Architecture", value: "Zero-Leak" },
-  { label: "Pipeline Uptime", value: "99.9%" },
-  { label: "Cost Reduction", value: "30%" },
+  { label: "Client Sites Live", value: "5" },
+  { label: "Enterprise Tenure", value: "4+ yrs" },
+  { label: "Stack", value: "Next.js · Java · Node" },
+  { label: "Base", value: "IIT + Big Tech" },
 ];
 
 export const TERMINAL_LINES: { tag: string; body: string; tone: string }[] = [

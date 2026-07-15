@@ -104,10 +104,10 @@ function Header() {
           </a>
         </nav>
         <a
-          href="mailto:a.ranjan.tech@gmail.com?subject=Architecture%20Call"
+          href="mailto:a.ranjan.tech@gmail.com?subject=Project%20Brief"
           className="group inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-xs font-medium text-emerald-300 transition-all hover:border-emerald-400/60 hover:bg-emerald-500/15 hover:text-emerald-200 sm:text-sm"
         >
-          Book Architecture Call
+          Start a Project
           <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
         </a>
       </div>
@@ -134,21 +134,22 @@ function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/60" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
             </span>
-            <span>Available for architecture engagements</span>
+            <span>● Available for full-stack & architecture contracts</span>
           </div>
 
           <h1 className="mt-7 text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-[58px]">
-            Building Secure, Production-Grade{' '}
+            Engineering Premium{' '}
             <span className="bg-gradient-to-br from-emerald-300 via-emerald-400 to-indigo-400 bg-clip-text text-transparent">
-              AI Agents
+              Full-Stack Web Applications
             </span>{' '}
             & Enterprise Architecture.
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-base leading-relaxed text-slate-400 sm:text-[17px]">
-            I bridge the gap between complex AI orchestration and rigid
-            enterprise security. Specializing in high-performance backends,
-            zero-trust data ingestion, and actionable intelligence dashboards.
+            I bridge the gap between pixel-perfect interactive frontends and
+            scalable, high-concurrency backends. Specializing in Next.js
+            applications, production-grade architectures, and secure AI system
+            integrations.
           </p>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -156,15 +157,15 @@ function Hero() {
               href="#work"
               className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-medium text-slate-950 transition-transform hover:scale-[1.02] sm:w-auto"
             >
-              View Flagship Systems
+              View Shipped Projects →
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
-              href="#system"
+              href="mailto:a.ranjan.tech@gmail.com?subject=Project%20Brief"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-800 bg-slate-900/40 px-5 py-2.5 text-sm font-medium text-slate-200 transition-colors hover:border-slate-700 hover:bg-slate-900/70 sm:w-auto"
             >
               <TerminalIcon className="h-4 w-4 text-slate-400" />
-              See Live System Status
+              Send a Brief
             </a>
           </div>
         </SectionFade>
@@ -174,10 +175,10 @@ function Hero() {
           className="mx-auto mt-14 grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-4"
         >
           {[
-            { k: 'Specialty', v: 'Agentic Systems' },
-            { k: 'Stack', v: 'TS · Java · Node' },
-            { k: 'Posture', v: 'Zero-Trust' },
-            { k: 'Surface', v: 'Edge → Backend' },
+            { k: 'Specialty', v: 'Full-Stack & AI' },
+            { k: 'Stack', v: 'Next.js · Java · React' },
+            { k: 'Posture', v: 'Sub-Second Vitals' },
+            { k: 'Surface', v: 'Design → Production' },
           ].map((s) => (
             <div
               key={s.k}
@@ -212,8 +213,10 @@ function WorkSection() {
               </span>
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-pretty text-[15px] leading-relaxed text-slate-400 sm:text-base">
-              Flagship systems for AI infrastructure, alongside production
-              frontend interfaces shipped for real clients. Scroll through.
+              Production sites shipped for real clients — an NSE-listed
+              conglomerate, a designer entrepreneur, an international
+              contemporary artist — alongside engineering case studies from
+              personal AI R&amp;D. Scroll through.
             </p>
           </div>
         </SectionFade>
@@ -242,8 +245,9 @@ function SkillMatrix() {
               </span>
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-pretty text-[15px] leading-relaxed text-slate-400 sm:text-base">
-              Grouped by the role each layer plays in delivering secure,
-              observable AI software.
+              Grouped by the role each layer plays in shipping a full-stack
+              application — from pixel-perfect frontend to backend, AI
+              integration, and delivery discipline.
             </p>
           </div>
         </SectionFade>
@@ -389,8 +393,8 @@ function Footer() {
             Abhishek Ranjan
           </div>
           <p className="mt-2 max-w-md text-xs leading-relaxed text-slate-500">
-            Designing secure, observable AI systems. Open to staff-level
-            engineering and architecture engagements.
+            Senior full-stack contractor — Next.js, Java-Spring, AI
+            integrations. Open to project-based and retainer contracts.
           </p>
         </div>
 

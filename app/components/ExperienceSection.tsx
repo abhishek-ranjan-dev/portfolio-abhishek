@@ -5,6 +5,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
+  ArrowUpRight,
   CalendarDays,
   GraduationCap,
   MapPin,
@@ -27,6 +28,7 @@ const ACCENT_STYLES: Record<
     glow: string;
     rule: string;
     text: string;
+    hoverText: string;
     bullet: string;
     softBg: string;
   }
@@ -41,6 +43,7 @@ const ACCENT_STYLES: Record<
     glow: "shadow-[0_0_40px_-8px_rgba(52,211,153,0.4)]",
     rule: "from-emerald-500/60 via-emerald-500/30 to-transparent",
     text: "text-emerald-300",
+    hoverText: "hover:text-emerald-300",
     bullet: "bg-emerald-400",
     softBg:
       "from-emerald-500/10 via-emerald-500/5 to-transparent",
@@ -55,6 +58,7 @@ const ACCENT_STYLES: Record<
     glow: "shadow-[0_0_40px_-8px_rgba(129,140,248,0.4)]",
     rule: "from-indigo-500/60 via-indigo-500/30 to-transparent",
     text: "text-indigo-300",
+    hoverText: "hover:text-indigo-300",
     bullet: "bg-indigo-400",
     softBg:
       "from-indigo-500/10 via-indigo-500/5 to-transparent",
@@ -68,6 +72,7 @@ const ACCENT_STYLES: Record<
     glow: "shadow-[0_0_40px_-8px_rgba(251,191,36,0.4)]",
     rule: "from-amber-500/60 via-amber-500/30 to-transparent",
     text: "text-amber-300",
+    hoverText: "hover:text-amber-300",
     bullet: "bg-amber-400",
     softBg:
       "from-amber-500/10 via-amber-500/5 to-transparent",
@@ -81,6 +86,7 @@ const ACCENT_STYLES: Record<
     glow: "shadow-[0_0_40px_-8px_rgba(56,189,248,0.4)]",
     rule: "from-sky-500/60 via-sky-500/30 to-transparent",
     text: "text-sky-300",
+    hoverText: "hover:text-sky-300",
     bullet: "bg-sky-400",
     softBg: "from-sky-500/10 via-sky-500/5 to-transparent",
   },
@@ -284,9 +290,23 @@ function CompanyDetail({ company }: { company: WorkExperience }) {
             />
             <div className="min-w-0 flex-1">
               <div className="flex flex-wrap items-center gap-2">
-                <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                  {company.company}
-                </h3>
+                {company.companyUrl ? (
+                  <a
+                    href={company.companyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`group/company inline-flex items-center gap-2 text-2xl font-semibold tracking-tight text-white transition-colors ${a.hoverText} sm:text-3xl`}
+                  >
+                    {company.company}
+                    <ArrowUpRight
+                      className={`h-4 w-4 ${a.text} opacity-70 transition-all group-hover/company:opacity-100 group-hover/company:-translate-y-0.5 group-hover/company:translate-x-0.5 sm:h-5 sm:w-5`}
+                    />
+                  </a>
+                ) : (
+                  <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                    {company.company}
+                  </h3>
+                )}
                 <span
                   className={`rounded-full border border-slate-800 bg-slate-950/40 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.18em] ${a.text}`}
                 >
@@ -323,18 +343,6 @@ function CompanyDetail({ company }: { company: WorkExperience }) {
               aria-hidden
             />
           </div>
-
-          {/* Highlights */}
-          <ul className="mt-7 space-y-3 text-[14.5px] leading-relaxed text-slate-200">
-            {company.highlights.map((h) => (
-              <li key={h} className="flex gap-3">
-                <span
-                  className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${a.bullet}`}
-                />
-                <span>{h}</span>
-              </li>
-            ))}
-          </ul>
 
           {/* Skills */}
           <div className="mt-7 flex flex-wrap gap-1.5 border-t border-slate-800/70 pt-5">

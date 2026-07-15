@@ -13,14 +13,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Abhishek Ranjan — Secure AI Architecture & Production Engineering",
+  title:
+    "Abhishek Ranjan — Senior Next.js + Java Developer | Ex-Flipkart, New Relic",
   description:
-    "Engineering portfolio of Abhishek Ranjan. Building secure, production-grade AI agents, zero-trust ingestion pipelines, and actionable intelligence dashboards.",
+    "Senior full-stack contractor building production Next.js applications, Spring Boot backends, and AI integrations. Ex-Flipkart, currently at New Relic. IIT (ISM) Dhanbad 2022.",
   metadataBase: new URL("https://abhishekranjan.dev"),
   openGraph: {
-    title: "Abhishek Ranjan — Secure AI Architecture & Production Engineering",
+    title:
+      "Abhishek Ranjan — Senior Next.js + Java Developer | Ex-Flipkart, New Relic",
     description:
-      "Production-grade AI agents, zero-trust data ingestion, and observability-first backends.",
+      "Production Next.js apps, Java-Spring backends, and AI feature integration for founders who need code that ships and stays up.",
     type: "website",
   },
 };

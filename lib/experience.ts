@@ -2,6 +2,7 @@ export type ExperienceAccent = "emerald" | "indigo" | "amber" | "sky";
 
 export interface WorkExperience {
   company: string;
+  companyUrl?: string;
   monogram: string;
   accent: ExperienceAccent;
   shortPeriod: string;
@@ -25,6 +26,7 @@ export interface EducationItem {
 export const EXPERIENCE: WorkExperience[] = [
   {
     company: "New Relic",
+    companyUrl: "https://www.linkedin.com/company/new-relic-inc-/",
     monogram: "NR",
     accent: "emerald",
     shortPeriod: "2024 → NOW",
@@ -47,6 +49,7 @@ export const EXPERIENCE: WorkExperience[] = [
   },
   {
     company: "Flipkart",
+    companyUrl: "https://www.linkedin.com/company/flipkart/",
     monogram: "FK",
     accent: "indigo",
     shortPeriod: "2022 → 2024",
@@ -123,6 +126,6 @@ export const EDUCATION: EducationItem[] = [
 export const CAREER_STATS: { label: string; value: string }[] = [
   { label: "Years shipping", value: "4+" },
   { label: "Enterprises", value: "New Relic · Flipkart" },
-  { label: "Stack", value: "JVM · Node · React · Cloud" },
+  { label: "Stack", value: "Next.js · Java · Node" },
   { label: "Education", value: "IIT (ISM) Dhanbad 2022" },
 ];
