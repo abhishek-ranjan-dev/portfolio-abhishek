@@ -223,7 +223,7 @@ export const SKILL_TIERS: { title: string; items: string[] }[] = [
 export const RIBBON_METRICS: { label: string; value: string }[] = [
   { label: "Client Sites Live", value: "5" },
   { label: "Enterprise Tenure", value: "4+ yrs" },
-  { label: "Stack", value: "Next.js · Java · Node" },
+  { label: "Skills", value: "Next.js · Java · Node" },
   { label: "Base", value: "IIT + Big Tech" },
 ];
 

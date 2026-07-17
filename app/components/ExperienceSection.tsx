@@ -1,20 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  CalendarDays,
-  GraduationCap,
-  MapPin,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowUpRight, CalendarDays, MapPin } from "lucide-react";
 import {
   CAREER_STATS,
-  EDUCATION,
   EXPERIENCE,
-  type EducationItem,
   type ExperienceAccent,
   type WorkExperience,
 } from "@/lib/experience";
@@ -26,11 +17,13 @@ const ACCENT_STYLES: Record<
     monoIdle: string;
     chipActive: string;
     glow: string;
+    hoverGlow: string;
     rule: string;
     text: string;
     hoverText: string;
     bullet: string;
     softBg: string;
+    hoverBorder: string;
   }
 > = {
   emerald: {
@@ -41,12 +34,14 @@ const ACCENT_STYLES: Record<
     chipActive:
       "border-emerald-500/40 bg-emerald-500/10 ring-1 ring-emerald-500/20",
     glow: "shadow-[0_0_40px_-8px_rgba(52,211,153,0.4)]",
+    hoverGlow: "hover:shadow-[0_0_40px_-8px_rgba(52,211,153,0.4)]",
     rule: "from-emerald-500/60 via-emerald-500/30 to-transparent",
     text: "text-emerald-300",
     hoverText: "hover:text-emerald-300",
     bullet: "bg-emerald-400",
     softBg:
       "from-emerald-500/10 via-emerald-500/5 to-transparent",
+    hoverBorder: "hover:border-emerald-500/40",
   },
   indigo: {
     monoActive:
@@ -56,12 +51,14 @@ const ACCENT_STYLES: Record<
     chipActive:
       "border-indigo-500/40 bg-indigo-500/10 ring-1 ring-indigo-500/20",
     glow: "shadow-[0_0_40px_-8px_rgba(129,140,248,0.4)]",
+    hoverGlow: "hover:shadow-[0_0_40px_-8px_rgba(129,140,248,0.4)]",
     rule: "from-indigo-500/60 via-indigo-500/30 to-transparent",
     text: "text-indigo-300",
     hoverText: "hover:text-indigo-300",
     bullet: "bg-indigo-400",
     softBg:
       "from-indigo-500/10 via-indigo-500/5 to-transparent",
+    hoverBorder: "hover:border-indigo-500/40",
   },
   amber: {
     monoActive:
@@ -70,12 +67,14 @@ const ACCENT_STYLES: Record<
     chipActive:
       "border-amber-500/40 bg-amber-500/10 ring-1 ring-amber-500/20",
     glow: "shadow-[0_0_40px_-8px_rgba(251,191,36,0.4)]",
+    hoverGlow: "hover:shadow-[0_0_40px_-8px_rgba(251,191,36,0.4)]",
     rule: "from-amber-500/60 via-amber-500/30 to-transparent",
     text: "text-amber-300",
     hoverText: "hover:text-amber-300",
     bullet: "bg-amber-400",
     softBg:
       "from-amber-500/10 via-amber-500/5 to-transparent",
+    hoverBorder: "hover:border-amber-500/40",
   },
   sky: {
     monoActive:
@@ -84,18 +83,17 @@ const ACCENT_STYLES: Record<
     chipActive:
       "border-sky-500/40 bg-sky-500/10 ring-1 ring-sky-500/20",
     glow: "shadow-[0_0_40px_-8px_rgba(56,189,248,0.4)]",
+    hoverGlow: "hover:shadow-[0_0_40px_-8px_rgba(56,189,248,0.4)]",
     rule: "from-sky-500/60 via-sky-500/30 to-transparent",
     text: "text-sky-300",
     hoverText: "hover:text-sky-300",
     bullet: "bg-sky-400",
     softBg: "from-sky-500/10 via-sky-500/5 to-transparent",
+    hoverBorder: "hover:border-sky-500/40",
   },
 };
 
 export function ExperienceSection() {
-  const [selectedIdx, setSelectedIdx] = useState(0);
-  const selected = EXPERIENCE[selectedIdx];
-
   return (
     <section
       id="experience"
@@ -146,283 +144,175 @@ export function ExperienceSection() {
           ))}
         </motion.ul>
 
-        {/* Split panel */}
-        <div className="mt-14 grid gap-6 lg:grid-cols-[320px_1fr] lg:gap-10">
-          <CompanyRail
-            selectedIdx={selectedIdx}
-            onSelect={setSelectedIdx}
-          />
-          <CompanyDetail key="detail" company={selected} />
-        </div>
+        {/* Company card grid */}
+        <motion.ul
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+        >
+          {EXPERIENCE.map((exp) => (
+            <li key={exp.company}>
+              <CompanyCard company={exp} />
+            </li>
+          ))}
+        </motion.ul>
 
-        {/* Education */}
-        <div className="mt-12">
-          <EducationCard edu={EDUCATION[0]} />
-        </div>
       </div>
     </section>
   );
 }
 
-/* ----------------------------- Company rail ------------------------------ */
+/* ------------------------------ Company card ----------------------------- */
 
-function CompanyRail({
-  selectedIdx,
-  onSelect,
-}: {
-  selectedIdx: number;
-  onSelect: (i: number) => void;
-}) {
+function CompanyCard({ company }: { company: WorkExperience }) {
+  const a = ACCENT_STYLES[company.accent];
+  const cardClassName = `group relative block h-[380px] overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/40 transition-all duration-500 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-within:[&_.card-rest]:opacity-0 focus-within:[&_.card-rest]:-translate-y-2 focus-within:[&_.card-detail]:opacity-100 focus-within:[&_.card-detail]:translate-y-0 ${a.hoverBorder} ${a.hoverGlow}`;
+  const Root = company.companyUrl ? "a" : "div";
+  const rootProps = company.companyUrl
+    ? {
+        href: company.companyUrl,
+        target: "_blank" as const,
+        rel: "noopener noreferrer",
+        "aria-label": `${company.company} — opens in a new tab`,
+      }
+    : { tabIndex: 0 };
   return (
-    <ol
-      role="tablist"
-      aria-label="Career companies"
-      className="flex gap-2 overflow-x-auto pb-2 lg:flex-col lg:gap-2 lg:overflow-visible lg:pb-0"
-    >
-      {EXPERIENCE.map((exp, i) => {
-        const isActive = i === selectedIdx;
-        const a = ACCENT_STYLES[exp.accent];
-        return (
-          <li key={exp.company} className="shrink-0 lg:shrink">
-            <button
-              role="tab"
-              aria-selected={isActive}
-              onClick={() => onSelect(i)}
-              className={`group relative flex w-full items-center gap-3 rounded-xl border px-3 py-3 text-left transition-all sm:gap-4 lg:px-4 ${
-                isActive
-                  ? `${a.chipActive} ${a.glow}`
-                  : "border-slate-800/80 bg-slate-900/30 hover:border-slate-700 hover:bg-slate-900/50"
-              }`}
-            >
-              <Monogram
-                label={exp.monogram}
-                accent={exp.accent}
-                active={isActive}
-              />
-              <div className="min-w-0 flex-1">
-                <div className="truncate text-[13.5px] font-semibold tracking-tight text-white sm:text-sm">
-                  {exp.company}
-                </div>
-                <div
-                  className={`mt-0.5 truncate text-[11px] uppercase tracking-[0.18em] ${
-                    isActive ? a.text : "text-slate-500"
-                  }`}
-                >
-                  {exp.shortPeriod}
-                </div>
-              </div>
-              {isActive && (
-                <motion.span
-                  layoutId="rail-arrow"
-                  className={`hidden lg:inline-flex ${a.text}`}
-                  transition={{
-                    type: "spring",
-                    stiffness: 380,
-                    damping: 30,
-                  }}
-                >
-                  <ArrowRight className="h-4 w-4" />
-                </motion.span>
+    <Root className={cardClassName} {...rootProps}>
+      {/* Brand soft gradient — intensifies on hover */}
+      <div
+        className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${a.softBg} opacity-60 transition-opacity duration-500 group-hover:opacity-100`}
+        aria-hidden
+      />
+
+      {/* Persistent type badge (top-right, visible in both states) */}
+      <span
+        className={`absolute right-4 top-4 z-10 rounded-full border border-slate-800 bg-slate-950/60 px-2.5 py-1 text-[10.5px] font-medium uppercase tracking-[0.18em] backdrop-blur-sm ${a.text}`}
+      >
+        {company.type}
+      </span>
+
+      {/* Rest state: centered monogram + company + date */}
+      <div className="card-rest absolute inset-0 flex flex-col items-center justify-center gap-5 p-6 transition-all duration-500 ease-out group-hover:opacity-0 group-hover:-translate-y-2">
+        <Monogram
+          label={company.monogram}
+          accent={company.accent}
+          size="lg"
+          logo={company.logo}
+          companyName={company.company}
+        />
+        <div className="text-center">
+          <div className="text-lg font-semibold tracking-tight text-white sm:text-xl">
+            {company.company}
+          </div>
+          <div className="mt-1 text-[12.5px] font-medium text-slate-300">
+            {company.role}
+          </div>
+          <div
+            className={`mt-2 font-mono text-[11px] uppercase tracking-[0.22em] ${a.text}`}
+          >
+            {company.shortPeriod}
+          </div>
+        </div>
+      </div>
+
+      {/* Hover state: full details */}
+      <div className="card-detail absolute inset-0 flex flex-col p-5 pt-12 opacity-0 translate-y-3 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0">
+        <div className="flex items-start gap-3">
+          <Monogram
+            label={company.monogram}
+            accent={company.accent}
+            size="md"
+            logo={company.logo}
+            companyName={company.company}
+          />
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-1.5">
+              <span className="truncate text-lg font-semibold tracking-tight text-white">
+                {company.company}
+              </span>
+              {company.companyUrl && (
+                <ArrowUpRight
+                  className={`h-4 w-4 shrink-0 ${a.text} opacity-70`}
+                />
               )}
-            </button>
-          </li>
-        );
-      })}
-    </ol>
+            </div>
+            <p className={`mt-1 truncate text-[13.5px] font-medium ${a.text}`}>
+              {company.role}
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-4 flex flex-col gap-1.5 text-[12.5px] text-slate-300">
+          <span className="inline-flex items-center gap-2">
+            <CalendarDays className="h-3.5 w-3.5 shrink-0 text-slate-500" />
+            <span className="truncate">{company.period}</span>
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <MapPin className="h-3.5 w-3.5 shrink-0 text-slate-500" />
+            <span className="truncate">{company.location}</span>
+          </span>
+        </div>
+
+        <div
+          className={`mt-4 h-px w-full bg-gradient-to-r ${a.rule}`}
+          aria-hidden
+        />
+
+        <div className="mt-4 flex flex-wrap gap-1.5">
+          {company.skills.map((s) => (
+            <span
+              key={s}
+              className="rounded-md border border-slate-800 bg-slate-900/80 px-2 py-0.5 font-mono text-[11.5px] text-slate-300"
+            >
+              {s}
+            </span>
+          ))}
+        </div>
+      </div>
+    </Root>
   );
 }
 
 function Monogram({
   label,
   accent,
-  active,
   size = "md",
+  logo,
+  companyName,
 }: {
   label: string;
   accent: ExperienceAccent;
-  active: boolean;
   size?: "md" | "lg";
+  logo?: string;
+  companyName?: string;
 }) {
   const a = ACCENT_STYLES[accent];
+
+  if (logo) {
+    const px = size === "lg" ? 112 : 44;
+    return (
+      <Image
+        src={logo}
+        alt={`${companyName ?? label} logo`}
+        width={px}
+        height={px}
+        className="shrink-0 object-contain"
+        style={{ width: px, height: px }}
+        unoptimized
+      />
+    );
+  }
+
   const dim =
     size === "lg" ? "h-16 w-16 text-lg" : "h-10 w-10 text-[12.5px]";
   return (
     <span
-      className={`grid shrink-0 place-items-center rounded-lg border font-mono font-semibold transition-all ${dim} ${
-        active ? a.monoActive : a.monoIdle
-      }`}
+      className={`grid shrink-0 place-items-center rounded-lg border font-mono font-semibold ${dim} ${a.monoActive}`}
     >
       {label}
     </span>
-  );
-}
-
-/* ----------------------------- Company detail ---------------------------- */
-
-function CompanyDetail({ company }: { company: WorkExperience }) {
-  const a = ACCENT_STYLES[company.accent];
-  return (
-    <div
-      className={`relative overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/40 ${a.glow}`}
-    >
-      {/* Brand soft gradient */}
-      <div
-        className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${a.softBg}`}
-        aria-hidden
-      />
-
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={company.company}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="relative p-6 sm:p-8"
-        >
-          {/* Top row: monogram + name + type */}
-          <div className="flex flex-wrap items-start gap-5">
-            <Monogram
-              label={company.monogram}
-              accent={company.accent}
-              active
-              size="lg"
-            />
-            <div className="min-w-0 flex-1">
-              <div className="flex flex-wrap items-center gap-2">
-                {company.companyUrl ? (
-                  <a
-                    href={company.companyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`group/company inline-flex items-center gap-2 text-2xl font-semibold tracking-tight text-white transition-colors ${a.hoverText} sm:text-3xl`}
-                  >
-                    {company.company}
-                    <ArrowUpRight
-                      className={`h-4 w-4 ${a.text} opacity-70 transition-all group-hover/company:opacity-100 group-hover/company:-translate-y-0.5 group-hover/company:translate-x-0.5 sm:h-5 sm:w-5`}
-                    />
-                  </a>
-                ) : (
-                  <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                    {company.company}
-                  </h3>
-                )}
-                <span
-                  className={`rounded-full border border-slate-800 bg-slate-950/40 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.18em] ${a.text}`}
-                >
-                  {company.type}
-                </span>
-              </div>
-              <p className={`mt-1 text-[15px] font-medium ${a.text}`}>
-                {company.role}
-              </p>
-            </div>
-          </div>
-
-          {/* Period & location */}
-          <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <div
-                className={`font-mono text-3xl font-semibold tracking-tight text-white sm:text-[40px] sm:leading-none`}
-              >
-                {company.shortPeriod}
-              </div>
-              <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-400">
-                <span className="inline-flex items-center gap-1.5">
-                  <CalendarDays className="h-3 w-3" />
-                  {company.period}
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <MapPin className="h-3 w-3" />
-                  {company.location}
-                </span>
-              </div>
-            </div>
-            <div
-              className={`h-px flex-1 bg-gradient-to-r ${a.rule}`}
-              aria-hidden
-            />
-          </div>
-
-          {/* Skills */}
-          <div className="mt-7 flex flex-wrap gap-1.5 border-t border-slate-800/70 pt-5">
-            {company.skills.map((s) => (
-              <span
-                key={s}
-                className="rounded-md border border-slate-800 bg-slate-900/80 px-2 py-0.5 font-mono text-[11px] text-slate-300"
-              >
-                {s}
-              </span>
-            ))}
-          </div>
-        </motion.div>
-      </AnimatePresence>
-    </div>
-  );
-}
-
-/* ----------------------------- Education --------------------------------- */
-
-function EducationCard({ edu }: { edu: EducationItem }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.55, delay: 0.05 }}
-      whileHover={{ y: -2 }}
-      className="group overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/40 transition-colors hover:border-slate-700/80"
-    >
-      <div className="grid items-stretch gap-0 md:grid-cols-[1.55fr_1fr]">
-        {/* Text content */}
-        <div className="p-6 sm:p-7">
-          <div className="mb-4 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-slate-400">
-            <GraduationCap className="h-3.5 w-3.5 text-emerald-400" />
-            Education
-          </div>
-          <div className="flex items-start gap-4">
-            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg border border-emerald-500/30 bg-emerald-500/10 font-mono text-[11px] font-semibold tracking-tight text-emerald-300">
-              IIT
-            </span>
-            <div className="min-w-0">
-              <h4 className="text-balance text-lg font-semibold leading-snug text-white sm:text-xl">
-                {edu.institution}
-              </h4>
-              <p className="mt-1 text-sm font-medium text-emerald-400">
-                {edu.degree}
-              </p>
-              <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-slate-500">
-                {edu.period}
-              </p>
-            </div>
-          </div>
-          <ul className="mt-5 space-y-2.5 text-[14px] leading-relaxed text-slate-300">
-            {edu.highlights.map((h) => (
-              <li key={h} className="flex gap-3">
-                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-emerald-400" />
-                <span>{h}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Convocation photo */}
-        <div className="relative aspect-[4/3] overflow-hidden border-t border-slate-800/70 md:aspect-auto md:min-h-[320px] md:border-l md:border-t-0">
-          <Image
-            src="/assests/convo-abhishek.jpg"
-            alt="Abhishek receiving his Bachelor of Technology degree at IIT (ISM) Dhanbad convocation, 2022"
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 40vw, 500px"
-            className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
-          />
-          {/* Soft vignette to harmonize with the dark theme */}
-          <div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"
-            aria-hidden
-          />
-        </div>
-      </div>
-    </motion.div>
   );
 }
 

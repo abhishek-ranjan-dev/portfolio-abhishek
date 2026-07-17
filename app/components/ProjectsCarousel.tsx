@@ -128,8 +128,11 @@ function ProjectSlide({
   project: Project;
   index: number;
 }) {
-  return (
-    <article className="group flex w-[88vw] shrink-0 flex-col gap-7 border-r border-slate-800/70 px-6 py-2 last:border-r-0 sm:w-[480px] sm:px-10 lg:w-[520px]">
+  const slideClassName =
+    "group flex w-[88vw] shrink-0 flex-col gap-7 border-r border-slate-800/70 px-6 py-2 last:border-r-0 sm:w-[480px] sm:px-10 lg:w-[520px]";
+
+  const body = (
+    <>
       {/* Header */}
       <header className="flex items-start justify-between gap-4">
         <span className="shrink-0 font-mono text-5xl font-semibold leading-none text-slate-700 sm:text-6xl">
@@ -152,7 +155,7 @@ function ProjectSlide({
       </header>
 
       {/* Visual */}
-      <ProjectVisual project={project} />
+      <ProjectVisual project={project} priority={index === 0} />
 
       {/* Tools & features */}
       <div>
@@ -164,24 +167,41 @@ function ProjectSlide({
         </p>
       </div>
 
-      {/* CTA */}
+      {/* CTA — visual affordance; whole card is the link when liveUrl exists */}
       {project.liveUrl && (
-        <a
-          href={project.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group/cta mt-auto inline-flex w-fit items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3.5 py-1.5 text-xs font-medium text-emerald-200 transition-all hover:border-emerald-400/70 hover:bg-emerald-500/20 hover:text-emerald-100"
-        >
+        <span className="group/cta mt-auto inline-flex w-fit items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3.5 py-1.5 text-xs font-medium text-emerald-200 transition-all group-hover:border-emerald-400/70 group-hover:bg-emerald-500/20 group-hover:text-emerald-100">
           <ExternalLink className="h-3.5 w-3.5" />
           Visit Live
-          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/cta:translate-x-0.5" />
-        </a>
+          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+        </span>
       )}
-    </article>
+    </>
   );
+
+  if (project.liveUrl) {
+    return (
+      <a
+        href={project.liveUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${project.title} — opens in a new tab`}
+        className={`${slideClassName} cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60`}
+      >
+        {body}
+      </a>
+    );
+  }
+
+  return <article className={slideClassName}>{body}</article>;
 }
 
-function ProjectVisual({ project }: { project: Project }) {
+function ProjectVisual({
+  project,
+  priority = false,
+}: {
+  project: Project;
+  priority?: boolean;
+}) {
   const monogram = project.title
     .split(/[\s-]+/)
     .filter(Boolean)
@@ -217,6 +237,7 @@ function ProjectVisual({ project }: { project: Project }) {
           sizes="(max-width: 640px) 80vw, 480px"
           className="relative object-cover transition-transform duration-700 group-hover:scale-[1.03]"
           unoptimized
+          priority={priority}
         />
         <div className="absolute bottom-3 left-3 flex items-center gap-2 rounded-md border border-slate-800/80 bg-slate-950/70 px-2.5 py-1 text-[10px] font-mono uppercase tracking-[0.18em] text-slate-300 backdrop-blur-md">
           <span

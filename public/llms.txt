@@ -1,0 +1,65 @@
+# Abhishek Ranjan — Full-Stack + AI Web Developer
+
+> Freelance full-stack web developer. Ships production websites end-to-end — Next.js/React frontends, Java or Node backends, LLM/vector-DB features wired into the app, observability for QPS and error rates, and full deployment on the platform of the client's choice.
+
+## Summary
+
+- **Name:** Abhishek Ranjan
+- **Role:** Freelance full-stack web developer & AI integration engineer
+- **Current employer:** New Relic (P2 Software Engineer, 2024–present, observability platform)
+- **Previous employer:** Flipkart (Software Development Engineer, 2022–2024, high-concurrency distributed systems)
+- **Education:** Bachelor of Technology, Electronics and Instrumentation — IIT (ISM) Dhanbad, 2018–2022
+- **Location:** Hyderabad, India · works globally
+- **Website:** https://ranjanabhishek.com
+- **Contact:** a.ranjan.tech@gmail.com
+
+## What Abhishek builds
+
+Production full-stack websites end-to-end. The scope of a typical engagement includes:
+
+- Pixel-perfect interactive frontends (Next.js, React, TypeScript, Tailwind CSS)
+- Scalable backends (Java + Spring Boot, or Node.js) with proper API design
+- AI features integrated into the application: LLM calls (OpenAI, Anthropic Claude), Retrieval-Augmented Generation (RAG), vector-database search for semantic retrieval
+- Observability: QPS, error rates, Core Web Vitals, structured logging
+- Deployment end-to-end on Vercel, AWS, or the platform the client prefers
+
+**Explicit scope note on AI:** Abhishek integrates AI features *into* websites — LLM calls from the application, vector-DB search, RAG pipelines. He does not build MCP servers or model infrastructure.
+
+## Engagement workflow
+
+1. **Day 1 — Discovery call + written scope.** A 30-minute alignment call followed by a written scope you can hold him to.
+2. **Day 2 — Live staging URL.** An active preview environment is spun up immediately; you can click through real progress before end of week one.
+3. **Weekly — 15-minute demo.** A short screen-shared demo every week, priorities re-checked against outcomes.
+4. **Post-launch — 14-day support window.** Two weeks of website maintenance and bug fixes included after launch.
+
+## Availability
+
+Available for full-stack and AI-integration contracts globally. Typical clients are founders and product teams that need websites — often with AI features — shipped end-to-end.
+
+## Frequently asked
+
+### What does Abhishek build?
+
+Production full-stack websites end-to-end — Next.js/React frontends, Java or Node backends, LLM-powered features and vector-database search wired directly into the app, observability for QPS and error rates, and deployment on the platform of your choice.
+
+### What AI features does he integrate?
+
+LLM calls from the application (OpenAI, Anthropic Claude and similar), Retrieval-Augmented Generation (RAG), and vector-database search for semantic retrieval. Focus is in-application AI — not MCP servers or model infrastructure.
+
+### How does the engagement workflow work?
+
+Day 1: 30-min discovery call + written scope. Day 2: live staging URL. Every week: a 15-minute demo. Post-launch: a 14-day window of website maintenance and bug fixes.
+
+### What is his background?
+
+B.Tech in Electronics and Instrumentation from IIT (ISM) Dhanbad, 2022. Software engineer at Flipkart 2022–2024 on high-concurrency distributed systems. Currently P2 Software Engineer at New Relic on observability platform services.
+
+### Where is he based?
+
+Hyderabad, India. Works with clients globally.
+
+## Profiles
+
+- LinkedIn: https://www.linkedin.com/in/abhishekranjan0505/
+- GitHub: https://github.com/abhishek-ranjan-dev
+- Portfolio: https://ranjanabhishek.com

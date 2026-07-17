@@ -101,7 +101,7 @@ export default function Image() {
             <span>AI Integrations</span>
           </div>
           <div style={{ color: "#64748b", fontSize: "18px" }}>
-            abhishekranjan.dev
+            ranjanabhishek.com
           </div>
         </div>
       </div>

@@ -15,6 +15,9 @@ import { MetricsRibbon } from './components/MetricsRibbon';
 import { Terminal } from './components/Terminal';
 import { ProjectsCarousel } from './components/ProjectsCarousel';
 import { ExperienceSection } from './components/ExperienceSection';
+import { EducationSection } from './components/EducationSection';
+import { WorkflowSection } from './components/WorkflowSection';
+import { FaqSection } from './components/FaqSection';
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -61,9 +64,12 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <MetricsRibbon />
+        <WorkflowSection />
         <WorkSection />
         <ExperienceSection />
+        <EducationSection />
         <SkillMatrix />
+        <FaqSection />
         {/* TODO: re-enable later — "Live security flex" / SystemTerminal section */}
         {/* <SystemTerminal /> */}
       </main>
@@ -100,7 +106,10 @@ function Header() {
             Experience
           </a>
           <a href="#skills" className="transition-colors hover:text-slate-100">
-            Stack
+            Skills
+          </a>
+          <a href="#faq" className="transition-colors hover:text-slate-100">
+            FAQ
           </a>
         </nav>
         <a
@@ -134,22 +143,22 @@ function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/60" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
             </span>
-            <span>● Available for full-stack & architecture contracts</span>
+            <span>● Available for full-stack & AI-integration contracts</span>
           </div>
 
           <h1 className="mt-7 text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-[58px]">
-            Engineering Premium{' '}
+            Full-Stack Websites with{' '}
             <span className="bg-gradient-to-br from-emerald-300 via-emerald-400 to-indigo-400 bg-clip-text text-transparent">
-              Full-Stack Web Applications
-            </span>{' '}
-            & Enterprise Architecture.
+              AI Features
+            </span>
+            , Shipped End-to-End.
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-base leading-relaxed text-slate-400 sm:text-[17px]">
-            I bridge the gap between pixel-perfect interactive frontends and
-            scalable, high-concurrency backends. Specializing in Next.js
-            applications, production-grade architectures, and secure AI system
-            integrations.
+            I build production websites end-to-end — pixel-perfect frontends,
+            scalable backends, LLM-powered features and vector-DB search wired
+            in, observability for QPS and error rates baked in, and full
+            deployment on the platform of your choice.
           </p>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -168,30 +177,6 @@ function Hero() {
               Send a Brief
             </a>
           </div>
-        </SectionFade>
-
-        <SectionFade
-          delay={0.15}
-          className="mx-auto mt-14 grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-4"
-        >
-          {[
-            { k: 'Specialty', v: 'Full-Stack & AI' },
-            { k: 'Stack', v: 'Next.js · Java · React' },
-            { k: 'Posture', v: 'Sub-Second Vitals' },
-            { k: 'Surface', v: 'Design → Production' },
-          ].map((s) => (
-            <div
-              key={s.k}
-              className="rounded-xl border border-slate-800/80 bg-slate-900/30 px-4 py-3 text-left"
-            >
-              <div className="text-[10px] uppercase tracking-[0.22em] text-slate-500">
-                {s.k}
-              </div>
-              <div className="mt-1 text-sm font-medium text-slate-200">
-                {s.v}
-              </div>
-            </div>
-          ))}
         </SectionFade>
       </div>
     </section>
@@ -406,7 +391,7 @@ function Footer() {
             <Mail className="h-3.5 w-3.5" /> a.ranjan.tech@gmail.com
           </a>
           <a
-            href="https://github.com/"
+            href="https://github.com/abhishek-ranjan-dev"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/40 px-3.5 py-2 text-xs text-slate-300 transition-colors hover:border-slate-700 hover:text-white"
@@ -425,7 +410,9 @@ function Footer() {
       </div>
       <div className="border-t border-slate-900/80">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 text-[11px] uppercase tracking-[0.22em] text-slate-500 sm:px-8">
-          <span>© {new Date().getFullYear()} Abhishek Ranjan</span>
+          <span suppressHydrationWarning>
+            © {new Date().getFullYear()} Abhishek Ranjan
+          </span>
         </div>
       </div>
     </footer>

@@ -4,6 +4,7 @@ export interface WorkExperience {
   company: string;
   companyUrl?: string;
   monogram: string;
+  logo?: string;
   accent: ExperienceAccent;
   shortPeriod: string;
   role: string;
@@ -16,9 +17,12 @@ export interface WorkExperience {
 
 export interface EducationItem {
   institution: string;
+  institutionUrl?: string;
   shortName: string;
   degree: string;
+  degreeType?: string;
   period: string;
+  location?: string;
   grade?: string;
   highlights: string[];
 }
@@ -26,11 +30,12 @@ export interface EducationItem {
 export const EXPERIENCE: WorkExperience[] = [
   {
     company: "New Relic",
-    companyUrl: "https://www.linkedin.com/company/new-relic-inc-/",
+    companyUrl: "https://newrelic.com/",
     monogram: "NR",
+    logo: "/logos/newrelic.svg",
     accent: "emerald",
     shortPeriod: "2024 → NOW",
-    role: "Software Engineer",
+    role: "P2 Software Engineer",
     period: "Jul 2024 — Present",
     location: "Hyderabad, Telangana, India (Hybrid)",
     type: "Full-time",
@@ -49,8 +54,9 @@ export const EXPERIENCE: WorkExperience[] = [
   },
   {
     company: "Flipkart",
-    companyUrl: "https://www.linkedin.com/company/flipkart/",
+    companyUrl: "https://www.flipkart.com/",
     monogram: "FK",
+    logo: "/logos/flipkart_logo.jpeg",
     accent: "indigo",
     shortPeriod: "2022 → 2024",
     role: "Software Development Engineer",
@@ -72,7 +78,9 @@ export const EXPERIENCE: WorkExperience[] = [
   },
   {
     company: "The 10x Academy",
+    companyUrl: "https://www.the10xacademy.com/",
     monogram: "10x",
+    logo: "/logos/10xAcademy.jpeg",
     accent: "amber",
     shortPeriod: "Feb → May 2022",
     role: "DSA and Full Stack Mentor",
@@ -91,7 +99,9 @@ export const EXPERIENCE: WorkExperience[] = [
   },
   {
     company: "DigiVats",
+    companyUrl: "https://digivats.com/",
     monogram: "DV",
+    logo: "/logos/digivats.jpeg",
     accent: "sky",
     shortPeriod: "2021 → 2022",
     role: "Website Developer Intern",
@@ -113,9 +123,12 @@ export const EXPERIENCE: WorkExperience[] = [
 export const EDUCATION: EducationItem[] = [
   {
     institution: "Indian Institute of Technology (ISM), Dhanbad",
+    institutionUrl: "https://www.linkedin.com/school/iitism/",
     shortName: "IIT (ISM) Dhanbad",
-    degree: "Bachelor of Technology — Electronics and Instrumentation",
+    degree: "Electronics and Instrumentation",
+    degreeType: "Bachelor of Technology",
     period: "Aug 2018 — Jun 2022",
+    location: "Dhanbad, Jharkhand, India",
     highlights: [
       "Developed a strong foundation in analytical problem solving, algorithmic efficiency, and complex system logic design.",
       "Leveraged intensive engineering training to cultivate high-performance computational models and programmatic automation workflows.",
@@ -126,6 +139,6 @@ export const EDUCATION: EducationItem[] = [
 export const CAREER_STATS: { label: string; value: string }[] = [
   { label: "Years shipping", value: "4+" },
   { label: "Enterprises", value: "New Relic · Flipkart" },
-  { label: "Stack", value: "Next.js · Java · Node" },
+  { label: "Skills", value: "Next.js · Java · Node" },
   { label: "Education", value: "IIT (ISM) Dhanbad 2022" },
 ];
