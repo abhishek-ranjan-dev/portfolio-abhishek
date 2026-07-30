@@ -63,7 +63,7 @@ export function WorkflowSection() {
           </div>
           <h2 className="mt-6 text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl">
             How I{" "}
-            <span className="bg-gradient-to-br from-emerald-200 via-emerald-400 to-emerald-600 bg-clip-text text-transparent">
+            <span className="text-emerald-400">
               ship
             </span>
           </h2>

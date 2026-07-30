@@ -110,7 +110,7 @@ export function ExperienceSection() {
         >
           <h2 className="text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl">
             My career &amp;{" "}
-            <span className="bg-gradient-to-br from-violet-200 via-violet-400 to-violet-600 bg-clip-text text-transparent">
+            <span className="text-emerald-400">
               Experience
             </span>
           </h2>

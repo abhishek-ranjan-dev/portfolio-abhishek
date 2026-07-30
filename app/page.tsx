@@ -6,7 +6,6 @@ import {
   LineChart,
   Mail,
   ShieldCheck,
-  Sparkles,
   Terminal as TerminalIcon,
 } from 'lucide-react';
 import { PROJECTS, SKILL_TIERS } from '@/lib/projects';
@@ -18,6 +17,7 @@ import { ExperienceSection } from './components/ExperienceSection';
 import { EducationSection } from './components/EducationSection';
 import { WorkflowSection } from './components/WorkflowSection';
 import { FaqSection } from './components/FaqSection';
+import { Monogram } from './components/Monogram';
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -88,8 +88,8 @@ function Header() {
           href="#"
           className="group flex items-center gap-2.5 font-medium tracking-tight"
         >
-          <span className="grid h-7 w-7 place-items-center rounded-md border border-slate-800 bg-slate-900/70 text-emerald-400 transition-colors group-hover:border-emerald-500/40">
-            <Sparkles className="h-3.5 w-3.5" strokeWidth={2} />
+          <span className="grid h-7 w-7 place-items-center rounded-md border border-slate-800 bg-slate-900/70 text-slate-100 transition-colors group-hover:border-emerald-500/40">
+            <Monogram className="h-4 w-4" />
           </span>
           <span className="text-sm text-slate-200 sm:text-[15px]">
             Abhishek Ranjan
@@ -114,7 +114,7 @@ function Header() {
         </nav>
         <a
           href="mailto:a.ranjan.tech@gmail.com?subject=Project%20Brief"
-          className="group inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-xs font-medium text-emerald-300 transition-all hover:border-emerald-400/60 hover:bg-emerald-500/15 hover:text-emerald-200 sm:text-sm"
+          className="tap-target group inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-xs font-medium text-emerald-300 transition-all hover:border-emerald-400/60 hover:bg-emerald-500/15 hover:text-emerald-200 sm:text-sm"
         >
           Start a Project
           <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -129,7 +129,6 @@ function Header() {
 function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid opacity-50" aria-hidden />
       <div className="absolute inset-0 bg-spotlight" aria-hidden />
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-slate-950"
@@ -137,41 +136,39 @@ function Hero() {
       />
 
       <div className="relative mx-auto max-w-7xl px-5 pt-20 pb-24 sm:px-8 sm:pt-28 sm:pb-32">
-        <SectionFade className="mx-auto max-w-3xl text-center">
+        <SectionFade className="mx-auto max-w-4xl text-center">
           <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/50 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-slate-400">
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/60" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
             </span>
-            <span>● Available for full-stack & AI-integration contracts</span>
+            <span>Open for new projects</span>
           </div>
 
-          <h1 className="mt-7 text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-[58px]">
-            Full-Stack Websites with{' '}
-            <span className="bg-gradient-to-br from-emerald-300 via-emerald-400 to-indigo-400 bg-clip-text text-transparent">
-              AI Features
-            </span>
-            , Shipped End-to-End.
+          <h1 className="mt-8 text-balance text-5xl font-semibold leading-[0.95] tracking-[-0.03em] text-white sm:text-6xl md:text-[76px] lg:text-[88px]">
+            Your whole tech team, in{' '}
+            <span className="text-emerald-400">one software engineer</span>
+            .
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-pretty text-base leading-relaxed text-slate-400 sm:text-[17px]">
-            I build production websites end-to-end — pixel-perfect frontends,
-            scalable backends, LLM-powered features and vector-DB search wired
-            in, observability for QPS and error rates baked in, and full
-            deployment on the platform of your choice.
+          <p className="mx-auto mt-7 max-w-2xl text-pretty text-base leading-relaxed text-slate-400 sm:text-[17px]">
+            I design, build, and launch complete websites and web apps —
+            including modern AI features like smart search and chatbots.
+            Straight talk, honest timelines, and one person you can actually
+            reach.
           </p>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href="#work"
-              className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-medium text-slate-950 transition-transform hover:scale-[1.02] sm:w-auto"
+              className="tap-target group inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-medium text-slate-950 transition-transform hover:scale-[1.02] sm:w-auto"
             >
-              View Shipped Projects →
+              See My Work
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
               href="mailto:a.ranjan.tech@gmail.com?subject=Project%20Brief"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-800 bg-slate-900/40 px-5 py-2.5 text-sm font-medium text-slate-200 transition-colors hover:border-slate-700 hover:bg-slate-900/70 sm:w-auto"
+              className="tap-target inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-800 bg-slate-900/40 px-5 py-2.5 text-sm font-medium text-slate-200 transition-colors hover:border-slate-700 hover:bg-slate-900/70 sm:w-auto"
             >
               <TerminalIcon className="h-4 w-4 text-slate-400" />
               Send a Brief
@@ -193,7 +190,7 @@ function WorkSection() {
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl">
               My{' '}
-              <span className="bg-gradient-to-br from-violet-200 via-violet-400 to-violet-600 bg-clip-text text-transparent">
+              <span className="text-emerald-400">
                 Work
               </span>
             </h2>
@@ -225,7 +222,7 @@ function SkillMatrix() {
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl">
               Core skill{' '}
-              <span className="bg-gradient-to-br from-violet-200 via-violet-400 to-violet-600 bg-clip-text text-transparent">
+              <span className="text-emerald-400">
                 matrix
               </span>
             </h2>
@@ -335,35 +332,6 @@ function SystemTerminal() {
   );
 }
 
-/* --------------------------- Section header helper ------------------------ */
-
-function SectionHeader({
-  eyebrow,
-  title,
-  description,
-}: {
-  eyebrow: string;
-  title: string;
-  description?: string;
-}) {
-  return (
-    <div className="max-w-2xl">
-      <div className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/50 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-slate-400">
-        <span className="h-1.5 w-1.5 rounded-full bg-indigo-400" />
-        {eyebrow}
-      </div>
-      <h2 className="mt-5 text-balance text-3xl font-semibold tracking-tight text-white sm:text-[40px] sm:leading-[1.1]">
-        {title}
-      </h2>
-      {description && (
-        <p className="mt-4 text-[15px] leading-relaxed text-slate-400">
-          {description}
-        </p>
-      )}
-    </div>
-  );
-}
-
 /* ---------------------------------- Footer -------------------------------- */
 
 function Footer() {
@@ -372,12 +340,12 @@ function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <div>
           <div className="flex items-center gap-2 text-sm text-slate-300">
-            <span className="grid h-6 w-6 place-items-center rounded-md border border-slate-800 bg-slate-900/70 text-emerald-400">
-              <Sparkles className="h-3 w-3" />
+            <span className="grid h-6 w-6 place-items-center rounded-md border border-slate-800 bg-slate-900/70 text-slate-100">
+              <Monogram className="h-3.5 w-3.5" />
             </span>
             Abhishek Ranjan
           </div>
-          <p className="mt-2 max-w-md text-xs leading-relaxed text-slate-500">
+          <p className="mt-2 max-w-md text-xs leading-relaxed text-slate-400">
             Senior full-stack contractor — Next.js, Java-Spring, AI
             integrations. Open to project-based and retainer contracts.
           </p>
@@ -386,7 +354,7 @@ function Footer() {
         <div className="flex flex-wrap items-center gap-3">
           <a
             href="mailto:a.ranjan.tech@gmail.com"
-            className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/40 px-3.5 py-2 text-xs text-slate-300 transition-colors hover:border-slate-700 hover:text-white"
+            className="tap-target inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/40 px-3.5 py-2 text-xs text-slate-300 transition-colors hover:border-slate-700 hover:text-white"
           >
             <Mail className="h-3.5 w-3.5" /> a.ranjan.tech@gmail.com
           </a>
@@ -394,7 +362,7 @@ function Footer() {
             href="https://github.com/abhishek-ranjan-dev"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/40 px-3.5 py-2 text-xs text-slate-300 transition-colors hover:border-slate-700 hover:text-white"
+            className="tap-target inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/40 px-3.5 py-2 text-xs text-slate-300 transition-colors hover:border-slate-700 hover:text-white"
           >
             <GithubIcon className="h-3.5 w-3.5" /> GitHub
           </a>
@@ -402,7 +370,7 @@ function Footer() {
             href="https://www.linkedin.com/in/abhishekranjan0505/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/40 px-3.5 py-2 text-xs text-slate-300 transition-colors hover:border-slate-700 hover:text-white"
+            className="tap-target inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/40 px-3.5 py-2 text-xs text-slate-300 transition-colors hover:border-slate-700 hover:text-white"
           >
             <LinkedinIcon className="h-3.5 w-3.5" /> LinkedIn
           </a>

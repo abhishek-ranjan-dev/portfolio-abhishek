@@ -32,14 +32,6 @@ body {
   color: #f8fafc;
 }
 
-/* Soft grid background utility */
-.bg-grid {
-  background-image:
-    linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
-
 /* Radial spotlight gradient used behind hero */
 .bg-spotlight {
   background:
@@ -83,6 +75,45 @@ body {
   width: 0.55ch;
   background: currentColor;
   animation: terminal-blink 1.1s steps(1) infinite;
+}
+
+/* Touch devices: guarantee a ≥44px hit area (WCAG 2.5.5) on compact pill
+   controls, without bloating the pointer-precise desktop layout. Scoped to
+   any-pointer: coarse so a mouse/trackpad keeps the tighter sizing. */
+@media (any-pointer: coarse) {
+  .tap-target {
+    min-height: 44px;
+  }
+}
+
+/* No-hover pointers can't reveal the experience cards' hover detail layer, so
+   they'd only ever see the teaser. Show the full detail (which already carries
+   everything — role, dates, location, skills) and drop the teaser instead. */
+@media (hover: none) {
+  .card-detail {
+    opacity: 1;
+    transform: none;
+  }
+  .card-rest {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* Reduced motion: stop decorative CSS loops. Targeted, not a blanket kill —
+   the status dot and caret remain visible as steady states, so no feedback or
+   hierarchy is lost. JS-driven motion is handled via useReducedMotion(). */
+@media (prefers-reduced-motion: reduce) {
+  .terminal-caret {
+    animation: none;
+    opacity: 1;
+  }
+  .animate-ping {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /* Thin scrollbar inside terminal */

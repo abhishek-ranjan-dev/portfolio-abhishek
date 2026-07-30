@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
   motion,
+  useReducedMotion,
   useScroll,
   useSpring,
   useTransform,
@@ -16,6 +17,24 @@ type Props = {
 };
 
 export function ProjectsCarousel({ projects }: Props) {
+  const reduceMotion = useReducedMotion();
+
+  // Touch devices swipe; they don't expect a vertical-scroll-driven horizontal
+  // carousel. Detect a coarse primary pointer client-side (default false so the
+  // first client render matches SSR — the flip happens post-hydration in the
+  // effect, no mismatch) and serve the native scroll list instead.
+  const [isTouch, setIsTouch] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(pointer: coarse)");
+    const update = () => setIsTouch(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  // The scroll-jack is a fine-pointer desktop focal moment only.
+  const useStaticList = reduceMotion || isTouch;
+
   const sectionRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -25,7 +44,9 @@ export function ProjectsCarousel({ projects }: Props) {
 
   // Measure how far the track has to translate to fully reveal the last card,
   // and size the tall outer container so vertical scroll distance ≈ translation.
+  // Skipped under reduced motion — that path renders a native scroll list.
   useEffect(() => {
+    if (useStaticList) return;
     const measure = () => {
       const track = trackRef.current;
       const sticky = stickyRef.current;
@@ -37,7 +58,7 @@ export function ProjectsCarousel({ projects }: Props) {
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
-  }, []);
+  }, [useStaticList]);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -58,6 +79,34 @@ export function ProjectsCarousel({ projects }: Props) {
   const outerStyle = maxTranslate
     ? { height: `${stickyHeight + maxTranslate}px` }
     : undefined;
+
+  // Touch / reduced-motion path: no scroll-jacking, no spring. The same cards
+  // become a native, keyboard- and swipe-friendly horizontal scroll list
+  // with snap points. Every card stays reachable without hijacked scroll.
+  if (useStaticList) {
+    return (
+      <div className="relative">
+        <div
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-slate-950 to-transparent"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-slate-950 to-transparent"
+          aria-hidden
+        />
+        <ul
+          className="terminal-scroll flex snap-x snap-mandatory list-none gap-0 overflow-x-auto px-5 pb-4 sm:px-8 [&>li]:snap-start"
+          aria-label="Selected projects"
+        >
+          {projects.map((p, i) => (
+            <li key={p.id} className="flex shrink-0">
+              <ProjectSlide project={p} index={i} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -155,7 +204,7 @@ function ProjectSlide({
       </header>
 
       {/* Visual */}
-      <ProjectVisual project={project} priority={index === 0} />
+      <ProjectVisual project={project} />
 
       {/* Tools & features */}
       <div>
@@ -195,13 +244,7 @@ function ProjectSlide({
   return <article className={slideClassName}>{body}</article>;
 }
 
-function ProjectVisual({
-  project,
-  priority = false,
-}: {
-  project: Project;
-  priority?: boolean;
-}) {
+function ProjectVisual({ project }: { project: Project }) {
   const monogram = project.title
     .split(/[\s-]+/)
     .filter(Boolean)
@@ -222,7 +265,6 @@ function ProjectVisual({
         className={`relative aspect-[5/4] overflow-hidden rounded-xl border border-slate-800/80 bg-gradient-to-br ${ringClass}`}
       >
         {/* Monogram fallback shows during load / if the screenshot service fails */}
-        <div className="absolute inset-0 bg-grid opacity-40" aria-hidden />
         <div className="absolute inset-0 grid place-items-center">
           <span
             className={`font-mono text-[88px] font-bold leading-none tracking-tight sm:text-[112px] ${textClass}`}
@@ -236,8 +278,6 @@ function ProjectVisual({
           fill
           sizes="(max-width: 640px) 80vw, 480px"
           className="relative object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-          unoptimized
-          priority={priority}
         />
         <div className="absolute bottom-3 left-3 flex items-center gap-2 rounded-md border border-slate-800/80 bg-slate-950/70 px-2.5 py-1 text-[10px] font-mono uppercase tracking-[0.18em] text-slate-300 backdrop-blur-md">
           <span
@@ -255,7 +295,6 @@ function ProjectVisual({
     <div
       className={`relative aspect-[5/4] overflow-hidden rounded-xl border border-slate-800/80 bg-gradient-to-br ${ringClass}`}
     >
-      <div className="absolute inset-0 bg-grid opacity-50" aria-hidden />
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.04),transparent_60%)]"
         aria-hidden

@@ -26,7 +26,7 @@ export function EducationSection() {
         >
           <h2 className="text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl">
             Where I{" "}
-            <span className="bg-gradient-to-br from-emerald-200 via-emerald-400 to-emerald-600 bg-clip-text text-transparent">
+            <span className="text-emerald-400">
               studied
             </span>
           </h2>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type HTMLMotionProps } from "framer-motion";
+import { motion, useReducedMotion, type HTMLMotionProps } from "framer-motion";
 import { type ReactNode } from "react";
 
 type Props = {
@@ -20,12 +20,21 @@ export function SectionFade({
   ...rest
 }: Props) {
   const MotionTag = motion[as] as typeof motion.div;
+  const reduceMotion = useReducedMotion();
+
+  // When the visitor asks for reduced motion, arrive already composed: no
+  // rise, no fade, no delay. Content is present and legible immediately —
+  // the state change is preserved, only the animation is dropped.
   return (
     <MotionTag
-      initial={{ opacity: 0, y }}
+      initial={reduceMotion ? false : { opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={
+        reduceMotion
+          ? { duration: 0 }
+          : { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }
+      }
       className={className}
       {...rest}
     >
