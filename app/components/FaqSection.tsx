@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 interface FaqItem {
@@ -38,40 +38,36 @@ const FAQS: FaqItem[] = [
 ];
 
 export function FaqSection() {
+  const reduce = useReducedMotion();
   return (
-    <section
-      id="faq"
-      className="relative border-t border-slate-900/80"
-    >
-      <div className="mx-auto max-w-4xl px-5 py-24 sm:px-8 sm:py-28">
+    <section id="faq" className="relative border-t border-[var(--line)]">
+      <div className="mx-auto max-w-4xl px-5 py-20 sm:px-8 sm:py-24">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={reduce ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center"
         >
-          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/50 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-slate-400">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-            Frequently Asked
-          </div>
-          <h2 className="mt-6 text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl">
-            Quick{" "}
-            <span className="text-emerald-400">
-              answers
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center gap-2 rounded-md border border-[var(--line)] bg-[var(--panel-2)] px-2.5 py-1 shadow-[inset_0_1px_0_var(--edge-hi)]">
+              <span className="placard placard-signal">CH · FAQ</span>
             </span>
+            <span className="groove-full flex-1" aria-hidden />
+          </div>
+          <h2 className="mt-5 text-balance text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.03em] text-[var(--ink)] sm:text-5xl md:text-6xl">
+            Quick <span className="text-[var(--signal)]">answers</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-pretty text-[15px] leading-relaxed text-slate-400 sm:text-base">
+          <p className="mt-5 max-w-2xl text-pretty text-[15px] leading-relaxed text-[var(--ink-mid)] sm:text-base">
             The things founders usually want to know before sending a brief.
           </p>
         </motion.div>
 
         <motion.ul
-          initial={{ opacity: 0, y: 12 }}
+          initial={reduce ? false : { opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="mt-14 divide-y divide-slate-800/70 overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/40"
+          className="panel mt-12 divide-y divide-[var(--line)] overflow-hidden p-0"
         >
           {FAQS.map((f, i) => (
             <FaqRow key={f.question} item={f} defaultOpen={i === 0} />
@@ -82,13 +78,7 @@ export function FaqSection() {
   );
 }
 
-function FaqRow({
-  item,
-  defaultOpen = false,
-}: {
-  item: FaqItem;
-  defaultOpen?: boolean;
-}) {
+function FaqRow({ item, defaultOpen = false }: { item: FaqItem; defaultOpen?: boolean }) {
   const [open, setOpen] = useState(defaultOpen);
   return (
     <li>
@@ -96,16 +86,14 @@ function FaqRow({
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className="flex w-full items-center justify-between gap-6 px-5 py-5 text-left transition-colors hover:bg-slate-900/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 sm:px-7 sm:py-6"
+        className="flex w-full items-center justify-between gap-6 px-5 py-5 text-left transition-colors hover:bg-[var(--panel-2)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--signal)] sm:px-7 sm:py-6"
       >
-        <span className="text-[15px] font-semibold tracking-tight text-white sm:text-base">
+        <span className="text-[15px] font-bold tracking-tight text-[var(--ink)] sm:text-base">
           {item.question}
         </span>
         <span
-          className={`grid h-8 w-8 shrink-0 place-items-center rounded-full border border-slate-800 bg-slate-950/40 text-slate-400 transition-all ${
-            open
-              ? "rotate-180 border-emerald-500/40 text-emerald-300"
-              : ""
+          className={`grid h-8 w-8 shrink-0 place-items-center rounded-md border border-[var(--line)] bg-[var(--panel-2)] text-[var(--ink-soft)] shadow-[inset_0_1px_0_var(--edge-hi)] transition-all ${
+            open ? "rotate-180 border-[var(--signal)] text-[var(--signal-ink)]" : ""
           }`}
           aria-hidden
         >
@@ -122,7 +110,7 @@ function FaqRow({
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <p className="px-5 pb-6 text-[14px] leading-relaxed text-slate-300 sm:px-7 sm:pb-7 sm:text-[15px]">
+            <p className="px-5 pb-6 text-[14px] leading-relaxed text-[var(--ink-mid)] sm:px-7 sm:pb-7 sm:text-[15px]">
               {item.answer}
             </p>
           </motion.div>

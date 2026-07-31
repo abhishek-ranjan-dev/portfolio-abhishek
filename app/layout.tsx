@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Archivo, Martian_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// The Console's machined display + UI voice.
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Instrument readouts, engraved placards, tabular figures.
+const martianMono = Martian_Mono({
+  variable: "--font-martian",
   subsets: ["latin"],
 });
 
@@ -82,6 +84,7 @@ const personSchema = {
   "@type": "Person",
   name: "Abhishek Ranjan",
   url: SITE_URL,
+  image: `${SITE_URL}/assests/abhishek-self-pic.jpg`,
   jobTitle: "Full-Stack Web Developer & AI Integration Engineer",
   description: DESCRIPTION,
   worksFor: { "@type": "Organization", name: "New Relic" },
@@ -199,9 +202,33 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${archivo.variable} ${martianMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-slate-950 text-slate-100">
+      <body className="flex min-h-full flex-col">
+        {/* Direction contract — survives the production build as an emitted HTML comment. */}
+        <div
+          hidden
+          dangerouslySetInnerHTML={{
+            __html: `<!--
+  IMPECCABLE DIRECTION CONTRACT — "THE CONSOLE"
+  THESIS: One engineer runs a whole system from a single control console. Refuses
+    the dark-neon terminal hero the category ships for dev portfolios.
+  OWN-WORLD: Daylight anodized-metal desk (warm brushed aluminium); raised bone
+    modules with real bevels + corner screws; Archivo machined display + Martian
+    Mono instrument readouts; ONE signal-orange accent; green "live/open" and amber
+    "caution" lamps used as function, never decoration. Light, not dark.
+  STORY: A founder lands on a working control desk showing this operator's system
+    live, reads the capability instruments and shipped-project channels, trusts the
+    precision, and sends a brief.
+  FIRST VIEWPORT: Console header bar with engraved nameplate + green OPEN
+    annunciator; "ONE ENGINEER. WHOLE TECH TEAM." set as a panel readout; a row of
+    live gauge tiles (years, sites live, uptime) beside an illuminated SEND BRIEF key.
+  FORM: Mission-control instrument console; candidate #3 of 7 grounded directions
+    (assigned by seed a7c20ae8, mode persuade); rendered in the daylight Braun/Rams
+    functional-instrument register, not the dealt dark cockpit.
+-->`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}

@@ -1,131 +1,179 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  ClipboardList,
-  Globe2,
-  MonitorPlay,
-  ShieldCheck,
-  type LucideIcon,
-} from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
-interface WorkflowStep {
-  icon: LucideIcon;
-  title: string;
+interface Step {
+  n: string;
   cadence: string;
+  title: string;
   body: string;
 }
 
-const STEPS: WorkflowStep[] = [
+const STEPS: Step[] = [
   {
-    icon: ClipboardList,
-    title: "Discovery & Clear Written Scope",
-    cadence: "Day 1 · 30-min call",
-    body: "A 30-minute alignment call, followed by a written scope you can hold me to. No moving targets, no billable ambiguity.",
+    n: "01",
+    cadence: "Day 1",
+    title: "Scope, in writing",
+    body: "A 30-minute call, then a scope doc you can hold me to. No moving targets.",
   },
   {
-    icon: Globe2,
-    title: "Live Staging URL from Day Two",
-    cadence: "Day 2 · Preview live",
-    body: "An active preview environment spun up immediately. Click through, audit, and interact with real code before the end of week one — no radio silence.",
+    n: "02",
+    cadence: "Day 2",
+    title: "Live URL, day two",
+    body: "A staging link before week one — you click real code, not slide decks.",
   },
   {
-    icon: MonitorPlay,
-    title: "High-Impact Weekly Demos",
-    cadence: "Weekly · 15 min",
-    body: "A 15-minute screen-shared demonstration every week. Progress you can see, prioritized against what still matters most.",
+    n: "03",
+    cadence: "Weekly",
+    title: "A demo every week",
+    body: "15 minutes, screen-shared. You always know exactly where it stands.",
   },
   {
-    icon: ShieldCheck,
-    title: "14-Day Post-Launch Support",
-    cadence: "Post-launch · 2 weeks",
-    body: "A two-week window of website maintenance and bug fixes included after launch. You're not left holding the pager on day one.",
+    n: "04",
+    cadence: "Launch + 14d",
+    title: "Two weeks of cover",
+    body: "Bug fixes and support for 14 days after launch. No day-one pager.",
   },
 ];
 
-export function WorkflowSection() {
-  return (
-    <section
-      id="workflow"
-      className="relative border-t border-slate-900/80"
-    >
-      <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-28">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center"
-        >
-          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/50 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-slate-400">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-            Engagement & Delivery
-          </div>
-          <h2 className="mt-6 text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl">
-            How I{" "}
-            <span className="text-emerald-400">
-              ship
-            </span>
-          </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-pretty text-[15px] leading-relaxed text-slate-400 sm:text-base">
-            A tight, visible workflow designed to keep founders in the loop and
-            projects on track — from written scope to a clean, supported handoff.
-          </p>
-        </motion.div>
+const EASE = [0.22, 1, 0.36, 1] as const;
+const VP = { once: true, margin: "-80px" } as const;
 
-        <motion.ol
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
-        >
-          {STEPS.map((step, i) => (
-            <WorkflowCard key={step.title} step={step} index={i} />
-          ))}
-        </motion.ol>
-      </div>
-    </section>
+function Node({ s }: { s: Step }) {
+  return (
+    <>
+      <div className="readout-num text-sm text-[var(--ink-soft)]">{s.n}</div>
+      <h3 className="mt-2 text-lg font-bold tracking-tight text-[var(--ink)]">
+        {s.title}
+      </h3>
+      <p className="placard placard-signal mt-1.5">{s.cadence}</p>
+      <p className="mt-3 max-w-[26ch] text-[13.5px] leading-relaxed text-[var(--ink-mid)]">
+        {s.body}
+      </p>
+    </>
   );
 }
 
-function WorkflowCard({ step, index }: { step: WorkflowStep; index: number }) {
-  const Icon = step.icon;
+export function WorkflowSection() {
+  const reduce = useReducedMotion();
+
   return (
-    <li className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/40 p-6 transition-all duration-500 hover:-translate-y-0.5 hover:border-emerald-500/40 hover:shadow-[0_0_50px_-12px_rgba(52,211,153,0.3)]">
-      <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-emerald-500/[0.07] via-emerald-500/[0.02] to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-100"
-        aria-hidden
-      />
+    <section id="workflow" className="relative border-t border-[var(--line)]">
+      <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24">
+        <motion.div
+          initial={reduce ? false : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={VP}
+          transition={{ duration: 0.6, ease: EASE }}
+        >
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center gap-2 rounded-md border border-[var(--line)] bg-[var(--panel-2)] px-2.5 py-1 shadow-[inset_0_1px_0_var(--edge-hi)]">
+              <span className="placard placard-signal">CH · DELIVERY</span>
+            </span>
+            <span className="groove-full flex-1" aria-hidden />
+          </div>
+          <h2 className="mt-5 text-balance text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.03em] text-[var(--ink)] sm:text-5xl md:text-6xl">
+            How I <span className="text-[var(--signal)]">ship</span>
+          </h2>
+          <p className="mt-5 max-w-xl text-pretty text-[15px] leading-relaxed text-[var(--ink-mid)] sm:text-base">
+            Days, not months — a tight, visible sequence from written scope to a
+            clean, supported handoff.
+          </p>
+        </motion.div>
 
-      <div className="relative flex items-center justify-between">
-        <span className="grid h-11 w-11 place-items-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 shadow-[0_0_20px_rgba(52,211,153,0.2)]">
-          <Icon className="h-5 w-5" strokeWidth={1.75} />
-        </span>
-        <span className="font-mono text-[26px] font-semibold leading-none text-slate-700 transition-colors group-hover:text-slate-500">
-          {String(index + 1).padStart(2, "0")}
-        </span>
+        {/* Desktop — horizontal rail (connectors run dot→dot, so the line ends
+            at the last node — no phantom tail) */}
+        <div className="mt-16 hidden sm:block">
+          <div className="grid grid-cols-4 gap-6">
+            {STEPS.map((s, i) => (
+              <div key={s.n} className="relative">
+                {i < STEPS.length - 1 && (
+                  <>
+                    <div
+                      className="absolute left-0 top-[6px] h-[3px] w-[calc(100%+1.5rem)] rounded-full bg-[var(--well)] shadow-[inset_0_1px_1px_rgba(90,84,70,0.4)]"
+                      aria-hidden
+                    />
+                    <motion.div
+                      className="absolute left-0 top-[6px] h-[3px] w-[calc(100%+1.5rem)] origin-left rounded-full bg-[var(--signal)]"
+                      initial={reduce ? { scaleX: 1 } : { scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{
+                        delay: reduce ? 0 : 0.2 + i * 0.32,
+                        duration: 0.42,
+                        ease: EASE,
+                      }}
+                      aria-hidden
+                    />
+                  </>
+                )}
+                <motion.span
+                  className="absolute left-0 top-0 z-10 h-3.5 w-3.5 rounded-full border-[3px] border-[var(--panel)] bg-[var(--signal)] shadow-[0_1px_2px_rgba(0,0,0,0.25)]"
+                  initial={reduce ? false : { scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{
+                    delay: reduce ? 0 : 0.1 + i * 0.32,
+                    duration: 0.4,
+                    ease: EASE,
+                  }}
+                  aria-hidden
+                />
+                <motion.div
+                  className="pt-9"
+                  initial={reduce ? false : { opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={VP}
+                  transition={{
+                    delay: reduce ? 0 : 0.2 + i * 0.14,
+                    duration: 0.5,
+                    ease: EASE,
+                  }}
+                >
+                  <Node s={s} />
+                </motion.div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile — vertical rail */}
+        <div className="mt-12 sm:hidden">
+          <div className="relative pl-7">
+            <div
+              className="absolute bottom-1.5 left-[6px] top-1.5 w-[3px] rounded-full bg-[var(--well)] shadow-[inset_0_1px_1px_rgba(90,84,70,0.4)]"
+              aria-hidden
+            />
+            <motion.div
+              className="absolute left-[6px] top-1.5 w-[3px] origin-top rounded-full bg-[var(--signal)]"
+              style={{ height: "calc(100% - 0.75rem)" }}
+              initial={reduce ? { scaleY: 1 } : { scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={VP}
+              transition={{ duration: 1.2, ease: EASE }}
+              aria-hidden
+            />
+            <div className="space-y-9">
+              {STEPS.map((s, i) => (
+                <motion.div
+                  key={s.n}
+                  className="relative"
+                  initial={reduce ? false : { opacity: 0, x: 8 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ delay: reduce ? 0 : i * 0.1, duration: 0.5, ease: EASE }}
+                >
+                  <span
+                    className="absolute -left-7 top-1 h-3.5 w-3.5 rounded-full border-[3px] border-[var(--panel)] bg-[var(--signal)] shadow-[0_1px_2px_rgba(0,0,0,0.25)]"
+                    aria-hidden
+                  />
+                  <Node s={s} />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div className="relative mt-6">
-        <p className="text-[10.5px] font-medium uppercase tracking-[0.22em] text-emerald-300/80">
-          {step.cadence}
-        </p>
-        <h3 className="mt-2 text-[17px] font-semibold leading-snug tracking-tight text-white">
-          {step.title}
-        </h3>
-      </div>
-
-      <p className="relative mt-4 text-[13.5px] leading-relaxed text-slate-400">
-        {step.body}
-      </p>
-
-      <div className="relative mt-auto pt-5">
-        <div
-          className="h-px w-full bg-gradient-to-r from-emerald-500/40 via-emerald-500/10 to-transparent"
-          aria-hidden
-        />
-      </div>
-    </li>
+    </section>
   );
 }

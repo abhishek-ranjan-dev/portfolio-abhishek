@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-30T00:00:00Z",
+  "title": "Design System: The Console",
+  "extensions": {
+    "colorMeta": {
+      "signal": {
+        "role": "primary",
+        "displayName": "Signal Orange",
+        "canonical": "#e0531d",
+        "tonalRamp": ["#3d1405", "#5c2008", "#7d2c0d", "#a53809", "#c74712", "#e0531d", "#ef6a34", "#f6a882"]
+      },
+      "signal-ink": {
+        "role": "primary",
+        "displayName": "Signal Ink",
+        "canonical": "#a53809",
+        "tonalRamp": ["#2e0f03", "#471805", "#622108", "#7d2c0d", "#a53809", "#c74712", "#e0531d", "#ee8a5c"]
+      },
+      "live": {
+        "role": "secondary",
+        "displayName": "Live Green",
+        "canonical": "#2f7d3f",
+        "tonalRamp": ["#0e2914", "#163d1e", "#1f5a2c", "#2f7d3f", "#3c9a50", "#58c46a", "#82d68f", "#b6e8bd"]
+      },
+      "live-glow": {
+        "role": "secondary",
+        "displayName": "Live Glow",
+        "canonical": "#58c46a",
+        "tonalRamp": ["#153a1e", "#1f5a2c", "#2f7d3f", "#3c9a50", "#58c46a", "#82d68f", "#a8e4b0", "#d3f2d7"]
+      },
+      "desk": {
+        "role": "neutral",
+        "displayName": "Desk (Brushed Aluminium)",
+        "canonical": "#d3cfc4",
+        "tonalRamp": ["#33302a", "#4f4b42", "#6e695d", "#928c7c", "#b3ad9d", "#c7c2b6", "#d3cfc4", "#eae7df"]
+      },
+      "desk-deep": {
+        "role": "neutral",
+        "displayName": "Desk Deep",
+        "canonical": "#c7c2b6",
+        "tonalRamp": ["#2f2c26", "#49463d", "#666055", "#8b8574", "#aaa393", "#c7c2b6", "#d6d2c8", "#ece9e2"]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Panel (Light Bone)",
+        "canonical": "#edeae2",
+        "tonalRamp": ["#3a382f", "#565247", "#767061", "#989182", "#bcb6a6", "#d8d4ca", "#edeae2", "#f8f6f1"]
+      },
+      "panel-2": {
+        "role": "neutral",
+        "displayName": "Panel 2",
+        "canonical": "#e5e1d8",
+        "tonalRamp": ["#37342c", "#524e44", "#71695c", "#938c7d", "#b8b1a1", "#d3cec4", "#e5e1d8", "#f3f1ea"]
+      },
+      "well": {
+        "role": "neutral",
+        "displayName": "Reading Well",
+        "canonical": "#dbd7cd",
+        "tonalRamp": ["#353229", "#4f4b41", "#6e685b", "#918b7c", "#b4ae9e", "#cbc6bb", "#dbd7cd", "#efece5"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink (Warm Near-Black)",
+        "canonical": "#1b1a16",
+        "tonalRamp": ["#1b1a16", "#33312a", "#4b463e", "#55514a", "#726c60", "#968f7e", "#bdb6a5", "#e4ded1"]
+      },
+      "ink-mid": {
+        "role": "neutral",
+        "displayName": "Ink Mid",
+        "canonical": "#55514a",
+        "tonalRamp": ["#1b1a16", "#302e28", "#413d36", "#55514a", "#726c60", "#948d7d", "#b9b2a2", "#ded8cb"]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Ink Soft",
+        "canonical": "#4b463e",
+        "tonalRamp": ["#1b1a16", "#2c2a24", "#3b3730", "#4b463e", "#665f53", "#8a8272", "#b2ab9a", "#dad4c7"]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#b8b3a5",
+        "tonalRamp": ["#2e2c26", "#47443b", "#655f52", "#867f6f", "#a49d8b", "#b8b3a5", "#cbc7bc", "#e6e3db"]
+      },
+      "edge-hi": {
+        "role": "neutral",
+        "displayName": "Edge Highlight",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#4a4a4a", "#666666", "#858585", "#a6a6a6", "#c4c4c4", "#dedede", "#f2f2f2", "#ffffff"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only — Archivo 800, uppercase, one per page." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles, uppercase, each with one orange payoff word." },
+      "title": { "displayName": "Title", "purpose": "Card and module titles; Archivo 700, mixed case, tight tracking." },
+      "body": { "displayName": "Body", "purpose": "Paragraph copy in Ink Mid, capped ~40-65ch." },
+      "readout": { "displayName": "Instrument Readout", "purpose": "Every measured value — Martian Mono, tabular figures, negative tracking." },
+      "label": { "displayName": "Placard", "purpose": "Engraved instrument labels — Martian Mono, 10.5px, 0.2em, uppercase, white top-emboss." }
+    },
+    "shadows": [
+      { "name": "raised-panel", "value": "inset 1px 1px 0 #ffffff, inset -1px -1px 0 rgba(120,112,96,0.22), 0 1px 0 #ffffff, 0 6px 14px -10px rgba(40,36,28,0.5)", "purpose": "Raised module face lifted off the desk with a machined bevel." },
+      { "name": "recessed-well", "value": "inset 2px 2px 5px rgba(90,84,70,0.28), inset -1px -1px 0 #ffffff", "purpose": "Content pressed into a module (readout wells, image frames)." },
+      { "name": "hover-lift", "value": "inset 1px 1px 0 #ffffff, inset -1px -1px 0 rgba(120,112,96,0.22), 0 14px 26px -14px rgba(40,36,28,0.6), 0 0 0 1px rgba(224,83,29,0.28)", "purpose": "Interactive module on hover — deeper drop plus a signal-orange ring." },
+      { "name": "signal-key", "value": "inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -2px 0 rgba(120,40,8,0.4), 0 6px 16px -8px rgba(207,71,21,0.7)", "purpose": "Illuminated primary orange key at rest." },
+      { "name": "metal-key", "value": "inset 0 1px 0 #ffffff, inset 0 -2px 0 rgba(120,112,96,0.18), 0 4px 12px -8px rgba(40,36,28,0.5)", "purpose": "Brushed-metal secondary key." },
+      { "name": "emboss-top", "value": "inset 0 1px 0 #ffffff", "purpose": "The universal 1px top-light lip on chips, wells, and grooves." }
+    ],
+    "motion": [
+      { "name": "power-on", "value": "power-on 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards", "purpose": "The one authored moment — hero elements boot from blur+offset, staggered po-1..po-6 (0.05s-0.6s)." },
+      { "name": "section-fade", "value": "opacity/translateY 0.6s cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "In-view arrival for every section below the hero." },
+      { "name": "panel-lift", "value": "transform/box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease", "purpose": "Interactive card hover rise." },
+      { "name": "lamp-pulse", "value": "lamp-pulse 2.4s ease-in-out infinite", "purpose": "Status lamp halo breathing; halts under reduced-motion." },
+      { "name": "ribbon-marquee", "value": "x 0% to -50% over 34s linear infinite", "purpose": "Seamless metrics-ribbon scroll; frozen under reduced-motion." },
+      { "name": "accordion", "value": "height/opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "FAQ row expand/collapse." },
+      { "name": "reduced-motion-standdown", "value": "animation-duration: 0.001ms; iteration-count: 1; power-on opacity forced to 1", "purpose": "Full motion stand-down under prefers-reduced-motion; content arrives composed and legible." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "container-7xl", "value": "1280px" },
+      { "name": "container-4xl", "value": "896px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Signal Key (Primary Button)",
+      "kind": "button",
+      "refersTo": "button-signal",
+      "description": "The one illuminated orange key — every Send a Brief / Visit live action.",
+      "html": "<a class=\"ds-btn-signal\" href=\"#\">Send a Brief<svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn-signal { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 12px 24px; font-family: Archivo, ui-sans-serif, system-ui, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: #fff; text-decoration: none; background: linear-gradient(180deg, #ef6a34, #e0531d 55%, #cf4715); border: 1px solid #a53c0f; border-radius: 999px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -2px 0 rgba(120,40,8,0.4), 0 6px 16px -8px rgba(207,71,21,0.7); transition: transform 0.12s ease, box-shadow 0.2s ease, filter 0.2s ease; } .ds-btn-signal:hover { filter: brightness(1.05); box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -2px 0 rgba(120,40,8,0.4), 0 10px 22px -8px rgba(207,71,21,0.85); } .ds-btn-signal:focus-visible { outline: none; box-shadow: 0 0 0 2px #e0531d; } .ds-btn-signal:active { transform: translateY(1.5px); box-shadow: inset 0 1px 3px rgba(120,40,8,0.5), 0 3px 8px -6px rgba(207,71,21,0.7); }"
+    },
+    {
+      "name": "Metal Key (Secondary Button)",
+      "kind": "button",
+      "refersTo": "button-metal",
+      "description": "Brushed-metal secondary key with engraved legend.",
+      "html": "<a class=\"ds-btn-metal\" href=\"#\">See my work</a>",
+      "css": ".ds-btn-metal { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 12px 24px; font-family: Archivo, ui-sans-serif, system-ui, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: #1b1a16; text-decoration: none; background: linear-gradient(180deg, #f3f0ea, #ddd8ce); border: 1px solid #b8b3a5; border-radius: 999px; box-shadow: inset 0 1px 0 #ffffff, inset 0 -2px 0 rgba(120,112,96,0.18), 0 4px 12px -8px rgba(40,36,28,0.5); transition: transform 0.12s ease, box-shadow 0.2s ease, border-color 0.2s ease; } .ds-btn-metal:hover { border-color: #4b463e; transform: translateY(-1px); } .ds-btn-metal:focus-visible { outline: none; box-shadow: 0 0 0 2px #e0531d; } .ds-btn-metal:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Annunciator (Status Pill)",
+      "kind": "chip",
+      "refersTo": "annunciator",
+      "description": "Metal capsule pairing a live status lamp with a placard — the recurring Open-for-briefs indicator.",
+      "html": "<span class=\"ds-annunciator\"><span class=\"ds-lamp\"></span><span class=\"ds-placard ds-placard-signal\">Open for briefs</span></span>",
+      "css": ".ds-annunciator { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.35rem 0.8rem 0.35rem 0.7rem; background: linear-gradient(180deg, #f2efe8, #e2ded4); border: 1px solid #b8b3a5; border-radius: 999px; box-shadow: inset 0 1px 0 #ffffff, inset 0 -1px 0 rgba(120,112,96,0.15); } .ds-lamp { position: relative; width: 9px; height: 9px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #58c46a, #2f7d3f 70%); box-shadow: 0 0 0 1px rgba(20,70,30,0.35), 0 0 8px 1px rgba(88,196,106,0.7); } .ds-lamp::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; background: rgba(88,196,106,0.35); animation: ds-lamp-pulse 2.4s ease-in-out infinite; } @keyframes ds-lamp-pulse { 0%,100% { opacity: 0.25; transform: scale(0.8); } 50% { opacity: 0.7; transform: scale(1.25); } } .ds-placard { font-family: 'Martian Mono', ui-monospace, monospace; font-size: 10.5px; line-height: 1; text-transform: uppercase; letter-spacing: 0.2em; color: #4b463e; text-shadow: 0 1px 0 #ffffff; } .ds-placard-signal { color: #a53809; }"
+    },
+    {
+      "name": "Raised Panel Card",
+      "kind": "card",
+      "refersTo": "panel-card",
+      "description": "The core tactile module — a beveled bone face lifted off the desk; add lift + screws for interactive cards.",
+      "html": "<div class=\"ds-panel ds-panel-lift ds-screws\"><span class=\"ds-placard ds-placard-signal\">CH · MODULE</span><h3 class=\"ds-panel-title\">Module title</h3><p class=\"ds-panel-body\">A raised instrument module on the control desk.</p></div>",
+      "css": ".ds-panel { position: relative; padding: 20px; background: #edeae2; border: 1px solid #b8b3a5; border-radius: 10px; box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 rgba(120,112,96,0.22), 0 1px 0 #ffffff, 0 6px 14px -10px rgba(40,36,28,0.5); } .ds-panel-lift { transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease; } .ds-panel-lift:hover { transform: translateY(-2px); border-color: #e0531d; box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 rgba(120,112,96,0.22), 0 14px 26px -14px rgba(40,36,28,0.6), 0 0 0 1px rgba(224,83,29,0.28); } .ds-screws::before, .ds-screws::after { content: ''; position: absolute; top: 10px; width: 7px; height: 7px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fdfcf9, #b9b3a4 65%, #8f8877 100%); box-shadow: inset 0 0 0 0.5px rgba(90,84,70,0.5), 0 1px 1px rgba(0,0,0,0.18); } .ds-screws::before { left: 10px; } .ds-screws::after { right: 10px; } .ds-panel-title { margin: 14px 0 0; font-family: Archivo, sans-serif; font-size: 1.125rem; font-weight: 700; letter-spacing: -0.01em; color: #1b1a16; } .ds-panel-body { margin: 12px 0 0; font-family: Archivo, sans-serif; font-size: 15px; line-height: 1.6; color: #55514a; } .ds-placard { font-family: 'Martian Mono', ui-monospace, monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.2em; text-shadow: 0 1px 0 #ffffff; } .ds-placard-signal { color: #a53809; }"
+    },
+    {
+      "name": "Instrument Readout Well",
+      "kind": "custom",
+      "refersTo": "panel-inset",
+      "description": "Signature primitive — a recessed well holding a tabular Martian Mono value, an orange unit tag, and a placard caption.",
+      "html": "<div class=\"ds-well\"><div class=\"ds-well-row\"><span class=\"ds-readout\">4+</span><span class=\"ds-unit\">YRS</span></div><span class=\"ds-placard\">Shipping in production</span></div>",
+      "css": ".ds-well { display: flex; flex-direction: column; padding: 14px 16px; background: #dbd7cd; border: 1px solid #b8b3a5; border-radius: 7px; box-shadow: inset 2px 2px 5px rgba(90,84,70,0.28), inset -1px -1px 0 #ffffff; } .ds-well-row { display: flex; align-items: baseline; gap: 6px; } .ds-readout { font-family: 'Martian Mono', ui-monospace, monospace; font-feature-settings: 'tnum' 1; letter-spacing: -0.03em; font-size: 2.25rem; font-weight: 700; color: #1b1a16; } .ds-unit { font-family: 'Martian Mono', ui-monospace, monospace; font-feature-settings: 'tnum' 1; font-size: 11px; font-weight: 700; color: #a53809; } .ds-placard { margin-top: 8px; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 10.5px; line-height: 1.4; text-transform: uppercase; letter-spacing: 0.2em; color: #4b463e; text-shadow: 0 1px 0 #ffffff; }"
+    },
+    {
+      "name": "Channel Section Head",
+      "kind": "nav",
+      "refersTo": "placard-chip",
+      "description": "Section heading pattern — an engraved channel-tag chip, an engraved groove, and an uppercase headline with one orange payoff word.",
+      "html": "<div class=\"ds-head\"><div class=\"ds-head-row\"><span class=\"ds-chip\"><span class=\"ds-placard ds-placard-signal\">CH · WORK</span></span><span class=\"ds-groove\"></span></div><h2 class=\"ds-headline\">Shipped <span class=\"ds-accent\">work</span></h2></div>",
+      "css": ".ds-head-row { display: flex; align-items: center; gap: 12px; } .ds-chip { display: inline-flex; align-items: center; padding: 4px 10px; background: #e5e1d8; border: 1px solid #b8b3a5; border-radius: 6px; box-shadow: inset 0 1px 0 #ffffff; } .ds-groove { flex: 1; height: 0; border-top: 1px solid #b8b3a5; border-bottom: 1px solid #ffffff; } .ds-placard { font-family: 'Martian Mono', ui-monospace, monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.2em; text-shadow: 0 1px 0 #ffffff; color: #4b463e; } .ds-placard-signal { color: #a53809; } .ds-headline { margin: 20px 0 0; font-family: Archivo, sans-serif; font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; color: #1b1a16; } .ds-accent { color: #e0531d; }"
+    },
+    {
+      "name": "FAQ Accordion Row",
+      "kind": "custom",
+      "refersTo": "panel-card",
+      "description": "Divided rows inside a raised panel; a beveled chevron tile rotates and turns signal-orange when open.",
+      "html": "<div class=\"ds-faq\"><button class=\"ds-faq-btn\" aria-expanded=\"true\"><span class=\"ds-faq-q\">What does Abhishek build?</span><span class=\"ds-faq-ico ds-open\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 9l6 6 6-6\"/></svg></span></button><p class=\"ds-faq-a\">Production full-stack websites end-to-end.</p></div>",
+      "css": ".ds-faq { background: #edeae2; border: 1px solid #b8b3a5; border-radius: 10px; overflow: hidden; box-shadow: inset 1px 1px 0 #ffffff, 0 6px 14px -10px rgba(40,36,28,0.5); } .ds-faq-btn { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 24px; padding: 20px; text-align: left; background: transparent; border: none; cursor: pointer; transition: background 0.2s ease; } .ds-faq-btn:hover { background: #e5e1d8; } .ds-faq-btn:focus-visible { outline: none; box-shadow: inset 0 0 0 2px #e0531d; } .ds-faq-q { font-family: Archivo, sans-serif; font-size: 15px; font-weight: 700; letter-spacing: -0.01em; color: #1b1a16; } .ds-faq-ico { display: grid; place-items: center; width: 32px; height: 32px; border: 1px solid #b8b3a5; border-radius: 6px; background: #e5e1d8; color: #4b463e; box-shadow: inset 0 1px 0 #ffffff; transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease; } .ds-faq-ico.ds-open { transform: rotate(180deg); color: #a53809; border-color: #e0531d; } .ds-faq-a { margin: 0; padding: 0 20px 24px; font-family: Archivo, sans-serif; font-size: 14px; line-height: 1.6; color: #55514a; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Daylight Control Desk",
+    "overview": "The Console is a warm, brushed-aluminium mission-control panel photographed in daylight. Everything on the page is a physical instrument on a metal desk: raised bone modules with real machined bevels and corner screws, recessed reading wells pressed into the surface, engraved placard labels, illuminated keys, and status lamps that light up only when they mean something. The register is functional Braun/Rams, not sci-fi. It reads as precision hardware built by one competent operator, which is the entire persuasion strategy: the surface itself is a work sample of care and correctness. The palette is metal neutrals plus exactly one voice — a signal orange — with a single functional green lamp for live/open status. Depth is built entirely from inset bevel shadows and a top-light gradient, never from cards floating on ambient drop shadows. Type splits cleanly by function: Archivo is the machined display and UI voice; Martian Mono is reserved for instrument readouts, tabular figures, and engraved labels. Motion is disciplined — one authored power-on moment when the hero boots, quiet in-view fades everywhere else, and a full stand-down under prefers-reduced-motion. This world is a deliberate refusal of the dark-neon developer-terminal hero the category ships by default. The prior near-black + emerald/indigo-glow + mono-terminal language is an explicit anti-reference. The Console is light, not dark; anodized metal, not a glowing screen; instrument, not cockpit.",
+    "keyCharacteristics": [
+      "Daylight brushed-metal desk; light surfaces, warm near-black ink, zero dark theme.",
+      "One signal-orange accent used as scarce emphasis; one functional green status lamp.",
+      "Physical depth from inset bevels, corner screws, and pressed-in wells — never ambient float.",
+      "Two-font functional split: Archivo (machined display/UI) + Martian Mono (readouts/placards).",
+      "One power-on hero moment; everything else fades quietly and stands down for reduced-motion."
+    ],
+    "rules": [
+      { "name": "The One Signal Rule", "body": "Signal Orange is the only accent hue on the page and appears on a small fraction of any screen — one illuminated key, one payoff word, one active indicator at a time. Its scarcity is the emphasis. If a second competing accent shows up, the system is broken.", "section": "colors" },
+      { "name": "The Function-Only Lamp Rule", "body": "Lamps light up because a state is true, never for decoration. Green = live/open (default .lamp); orange (.lamp-signal) = flagship/systems marker. There is no third lamp color in the shipped system.", "section": "colors" },
+      { "name": "The Tabular Readout Rule", "body": "Any number that represents a measured quantity is set in Martian Mono with tnum on and negative tracking. Numbers never appear in Archivo; prose never appears in Martian Mono.", "section": "typography" },
+      { "name": "The Engraved Label Rule", "body": "Placards are Martian Mono, 10.5px, uppercase, 0.2em tracking, with a single white top-emboss text-shadow — as if pressed into the metal. This is the only place letter-spacing goes positive.", "section": "typography" },
+      { "name": "The Bevel-Not-Float Rule", "body": "Surfaces earn depth by beveling into the metal, not by floating on a blurred shadow. Every card is either raised (edge-highlight top-left) or recessed (inset dark top-left). A card with only an outer drop shadow and no bevel is off-world.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the world in daylight — light metal grounds (Desk #d3cfc4, Panel #edeae2), warm near-black ink. New surfaces stay light.",
+      "Do declare every surface as raised (edge-highlight top-left bevel) or recessed (inset dark top-left). Honor The Bevel-Not-Float Rule.",
+      "Do ration Signal Orange to one emphasis per view and use Signal Ink (#a53809) for any orange text under ~18px. Honor The One Signal Rule.",
+      "Do set measured numbers in Martian Mono with tnum, and prose in Archivo. Honor The Tabular Readout Rule.",
+      "Do light a lamp only for a true state — green for live/open, orange for flagship. Honor The Function-Only Lamp Rule.",
+      "Do use 1px Line hairlines and stacked-emboss grooves for structure; corner screws for machined character.",
+      "Do keep one authored power-on moment (the hero boot); fade everything else quietly and fully stand down under prefers-reduced-motion."
+    ],
+    "donts": [
+      "Don't reintroduce the anti-reference: dark/near-black backgrounds, neon emerald/indigo glows, or glowing-terminal/mono-code motifs. The Console is anodized metal in daylight, not a screen.",
+      "Don't float a card on an ambient drop shadow without a bevel, or use shadow as the primary depth cue.",
+      "Don't introduce a second accent hue, tint surfaces with orange, or use orange as a background fill.",
+      "Don't color a lamp for decoration or invent a third lamp state (no amber caution lamp ships — do not add one without a real caution state to drive it).",
+      "Don't set body copy in Martian Mono or set measured values in Archivo.",
+      "Don't let letter-spacing go positive anywhere except placards (0.2em); display/headline type is tightly tracked (negative)."
+    ]
+  }
+}
