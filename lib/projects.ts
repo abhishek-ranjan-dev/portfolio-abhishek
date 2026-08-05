@@ -16,6 +16,31 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
+    id: "the-handmade-store",
+    title: "The Hand Made Store — Artisan Commerce Storefront",
+    subtitle: "Women-Owned Fair-Trade E-Commerce & Brand Surface",
+    category: "E-Commerce / Brand",
+    type: "frontend",
+    challenge:
+      "Selling ethically sourced, handcrafted goods from Indian artisan communities requires a storefront that reads as premium and trustworthy while foregrounding provenance — shoppers, corporate gifting buyers, and press each need a clear path without the catalog drowning out the makers' stories.",
+    architecture: [
+      "Commerce IA: Structured Shop, Artisans, Services, and Story as distinct surfaces so bestseller discovery, maker provenance, and corporate-gifting inquiries each get a first-class entry point.",
+      "Editorial Product UI: Paired high-fidelity product photography with clean serif-led typography and Next.js image optimization to keep the eco-conscious, handcrafted aesthetic sharp across viewports.",
+    ],
+    outcome:
+      "Delivered a fast, premium fair-trade storefront that turns artisan provenance into a conversion asset — routing individual shoppers, gift buyers, and corporate partners cleanly while keeping the makers' stories central to product value.",
+    tags: [
+      "Next.js",
+      "E-Commerce UX",
+      "Editorial Layout",
+      "Image Optimization",
+      "Responsive Design",
+    ],
+    liveUrl: "https://thehandmadestore.vercel.app/",
+    image:
+      "https://api.microlink.io/?url=https%3A%2F%2Fthehandmadestore.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=800",
+  },
+  {
     id: "ashwini-kurup",
     title: "Ashwini R. Kurup — Designer & Entrepreneur Portfolio",
     subtitle: "Sustainable Craft Storytelling & Ventures Showcase",
@@ -221,7 +246,7 @@ export const SKILL_TIERS: { title: string; items: string[] }[] = [
 ];
 
 export const RIBBON_METRICS: { label: string; value: string }[] = [
-  { label: "Client Sites Live", value: "5" },
+  { label: "Client Sites Live", value: "6" },
   { label: "Enterprise Tenure", value: "4+ yrs" },
   { label: "Skills", value: "Next.js · Java · Node" },
   { label: "Base", value: "IIT + Big Tech" },

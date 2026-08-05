@@ -139,7 +139,7 @@ function Header() {
 
 const HERO_READOUTS = [
   { value: '4+', unit: 'YRS', label: 'Shipping in production' },
-  { value: '5', unit: 'LIVE', label: 'Client sites launched' },
+  { value: '6', unit: 'LIVE', label: 'Client sites launched' },
   { value: 'AI', unit: 'RDY', label: 'LLM · RAG · vector search' },
 ];
 
@@ -150,7 +150,13 @@ function Hero() {
         {/* The console */}
         <div className="screws relative panel overflow-hidden p-6 sm:p-9 md:p-12">
           {/* Header strip */}
-          <div className="power-on po-1 flex flex-wrap items-center justify-end gap-3">
+          <div className="power-on po-1 flex flex-wrap items-center justify-between gap-3">
+            <span className="inline-flex items-center gap-2 rounded-md border border-[var(--line)] bg-[var(--panel-2)] px-2.5 py-1 shadow-[inset_0_1px_0_var(--edge-hi)]">
+              <span className="readout-num text-[11px] font-bold text-[var(--signal-ink)]">
+                IIT
+              </span>
+              <span className="placard">(ISM) Dhanbad · Alum</span>
+            </span>
             <span className="annunciator">
               <span className="lamp" aria-hidden />
               <span className="placard placard-signal">Open for briefs</span>
