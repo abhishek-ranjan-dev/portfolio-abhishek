@@ -14,6 +14,7 @@
 
 import {
   ArrowRight,
+  ArrowLeft,
   MessageCircle,
   Check,
   GraduationCap,
@@ -26,6 +27,7 @@ import {
   Wallet,
   Sparkles,
 } from "lucide-react";
+import Link from "next/link";
 import WhyInvestSection from "./WhyInvestSection";
 import PricingSection from "./PricingSection";
 import TimelineSupportSection from "./TimelineSupportSection";
@@ -127,6 +129,14 @@ export default function CafeLanding() {
             </span>
           </a>
           <div className="flex items-center gap-2 sm:gap-3">
+            <Link
+              href="/"
+              aria-label="Back to ranjanabhishek.com home"
+              className="group inline-flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-sm font-semibold text-slate-400 transition-colors hover:text-white sm:px-3"
+            >
+              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
+              <span className="hidden sm:inline">Home</span>
+            </Link>
             <a
               href="#pricing"
               onClick={smoothTo("pricing")}
@@ -407,10 +417,19 @@ export default function CafeLanding() {
               {AREAS.join(" • ")}, Hyderabad
             </div>
           </div>
-          <p className="mt-6 text-[12px] text-slate-600">
-            © {new Date().getFullYear()} Abhishek Ranjan · Direct-ordering
-            storefronts for cafes. 0% platform commission.
-          </p>
+          <div className="mt-6 flex flex-col gap-3 border-t border-white/5 pt-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-[12px] text-slate-600">
+              © {new Date().getFullYear()} Abhishek Ranjan · Direct-ordering
+              storefronts for cafes. 0% platform commission.
+            </p>
+            <Link
+              href="/"
+              className="group inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-slate-400 transition-colors hover:text-white"
+            >
+              <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-0.5" />
+              Back to ranjanabhishek.com
+            </Link>
+          </div>
         </div>
       </footer>
     </div>
