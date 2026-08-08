@@ -1,0 +1,98 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-color",
+        "value": "#0f172a",
+        "createdAt": "2026-08-08T16:36:02.110Z",
+        "reason": "Cafe /cafes route — user-specified dark-slate brand palette, intentional separate design world"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#0b1220",
+        "createdAt": "2026-08-08T16:36:02.151Z",
+        "reason": "Cafe /cafes route — user-specified dark-slate brand palette, intentional separate design world"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#d97706",
+        "createdAt": "2026-08-08T16:36:02.187Z",
+        "reason": "Cafe /cafes route — user-specified dark-slate brand palette, intentional separate design world"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#b45309",
+        "createdAt": "2026-08-08T16:36:02.223Z",
+        "reason": "Cafe /cafes route — user-specified dark-slate brand palette, intentional separate design world"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#059669",
+        "createdAt": "2026-08-08T16:36:02.263Z",
+        "reason": "Cafe /cafes route — user-specified dark-slate brand palette, intentional separate design world"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(217,119,6,0.20)",
+        "createdAt": "2026-08-08T16:36:02.303Z",
+        "reason": "Cafe /cafes route — user-specified dark-slate brand palette, intentional separate design world"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(217,119,6,0.16)",
+        "createdAt": "2026-08-08T16:36:02.341Z",
+        "reason": "Cafe /cafes route — user-specified dark-slate brand palette, intentional separate design world"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(5,150,105,0.16)",
+        "createdAt": "2026-08-08T16:36:02.377Z",
+        "reason": "Cafe /cafes route — user-specified dark-slate brand palette, intentional separate design world"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "8px",
+        "createdAt": "2026-08-08T16:36:02.415Z",
+        "reason": "/cafes decorative microcopy inside phone-mock and refund-stamp illustrations"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "9px",
+        "createdAt": "2026-08-08T16:36:02.452Z",
+        "reason": "/cafes decorative microcopy inside phone-mock and refund-stamp illustrations"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "roboto",
+        "createdAt": "2026-08-08T16:36:02.485Z",
+        "reason": "/cafes printable agreement — standalone light-themed PDF/print document, separate from app theme"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#e11d48",
+        "createdAt": "2026-08-08T16:36:02.520Z",
+        "reason": "/cafes printable agreement — standalone light-themed PDF/print document, separate from app theme"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#475569",
+        "createdAt": "2026-08-08T16:36:02.552Z",
+        "reason": "/cafes printable agreement — standalone light-themed PDF/print document, separate from app theme"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#334155",
+        "createdAt": "2026-08-08T16:36:02.584Z",
+        "reason": "/cafes printable agreement — standalone light-themed PDF/print document, separate from app theme"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#e2e8f0",
+        "createdAt": "2026-08-08T16:36:02.617Z",
+        "reason": "/cafes printable agreement — standalone light-themed PDF/print document, separate from app theme"
+      }
+    ]
+  }
+}

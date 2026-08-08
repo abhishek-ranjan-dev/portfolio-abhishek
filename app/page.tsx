@@ -11,6 +11,127 @@ import { WorkflowSection } from './components/WorkflowSection';
 import { FaqSection } from './components/FaqSection';
 import { Monogram } from './components/Monogram';
 
+// Site-identity JSON-LD lives on the homepage (not the root layout), so it does
+// not ride along on sub-routes like /cafes that carry their own schema.
+const SITE_URL = 'https://ranjanabhishek.com';
+const DESCRIPTION =
+  'Freelance full-stack developer. I build production websites end-to-end — Next.js, Java, LLM/vector-DB features, observability, deployment. Ex-Flipkart.';
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Abhishek Ranjan',
+  url: SITE_URL,
+  image: `${SITE_URL}/assests/abhishek-self-pic.jpg`,
+  jobTitle: 'Full-Stack Web Developer & AI Integration Engineer',
+  description: DESCRIPTION,
+  worksFor: { '@type': 'Organization', name: 'New Relic' },
+  alumniOf: [
+    {
+      '@type': 'CollegeOrUniversity',
+      name: 'Indian Institute of Technology (ISM), Dhanbad',
+    },
+    { '@type': 'Organization', name: 'Flipkart' },
+  ],
+  knowsAbout: [
+    'Full-stack web development',
+    'Next.js',
+    'React',
+    'TypeScript',
+    'Java',
+    'Spring Boot',
+    'Node.js',
+    'PostgreSQL',
+    'LLM integration',
+    'OpenAI API',
+    'Anthropic Claude API',
+    'Retrieval-Augmented Generation (RAG)',
+    'Vector database search',
+    'Website observability',
+    'QPS and error-rate monitoring',
+    'End-to-end deployment',
+    'Vercel',
+    'AWS',
+    'Core Web Vitals',
+  ],
+  sameAs: [
+    'https://www.linkedin.com/in/abhishekranjan0505/',
+    'https://github.com/abhishek-ranjan-dev',
+  ],
+};
+
+const professionalServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Abhishek Ranjan — Full-Stack & AI Web Development',
+  url: SITE_URL,
+  image: `${SITE_URL}/opengraph-image`,
+  description:
+    'Freelance full-stack web development with LLM/vector-DB feature integration, observability, and end-to-end deployment. Serving founders and product teams globally.',
+  provider: { '@type': 'Person', name: 'Abhishek Ranjan', url: SITE_URL },
+  areaServed: 'Global',
+  serviceType: [
+    'Full-stack web application development',
+    'Next.js development',
+    'Java / Spring Boot backend development',
+    'LLM integration (OpenAI, Anthropic)',
+    'Retrieval-Augmented Generation (RAG) with vector databases',
+    'Website observability (QPS, error rates, Core Web Vitals)',
+    'End-to-end deployment (Vercel, AWS, custom)',
+  ],
+  knowsAbout: personSchema.knowsAbout,
+};
+
+// TODO(~2026-07-25): add Review schema (and AggregateRating on
+// professionalServiceSchema if 2+) once client testimonials are in hand — plus
+// a visible testimonials section on the page. Highest-leverage remaining AEO move.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What does Abhishek Ranjan build?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Production full-stack websites end-to-end — Next.js/React frontends, Java or Node backends, LLM-powered features and vector-database search wired directly into the app, observability for QPS and error rates, and deployment on the platform of your choice.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What AI features does he integrate into websites?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'LLM calls from the application (OpenAI, Anthropic Claude and similar providers), Retrieval-Augmented Generation (RAG) pipelines, and vector-database search for semantic retrieval. Focus is on in-application AI features, not on building MCP servers or model infrastructure.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How does the engagement workflow work?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Day 1 is a 30-minute discovery call plus a written scope. A live staging URL is available from Day 2 so clients can audit progress before end of week one. Every week includes a 15-minute demo. Launch includes a 14-day window of website maintenance and bug fixes.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is his background?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Bachelor of Technology in Electronics and Instrumentation from IIT (ISM) Dhanbad, 2022. Software engineer at Flipkart (2022–2024) working on high-concurrency distributed systems, and currently a P2 Software Engineer at New Relic on observability platform services.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Where is he based and who does he work with?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Based in India (Hyderabad); available for full-stack and AI-integration contracts globally. Works primarily with founders and product teams that need websites and AI features shipped end-to-end.',
+      },
+    },
+  ],
+};
+
 function GithubIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" className={className}>
@@ -67,6 +188,18 @@ function SectionHead({
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <a href="#main" className="skip-link btn-signal tap-target px-4 py-2.5 text-sm">
         Skip to content
       </a>
