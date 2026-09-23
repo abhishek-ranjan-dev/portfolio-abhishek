@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight, Mail, Store, Zap, Check } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Mail, Store } from 'lucide-react';
 import { PROJECTS, SKILL_TIERS } from '@/lib/projects';
+import { getPublishedProjects } from '@/lib/supabase/projects';
 import { SectionFade } from './components/SectionFade';
 import { MetricsRibbon } from './components/MetricsRibbon';
 import { ProjectsCarousel } from './components/ProjectsCarousel';
@@ -204,12 +205,10 @@ export default function Home() {
       <a href="#main" className="skip-link btn-signal tap-target px-4 py-2.5 text-sm">
         Skip to content
       </a>
-      <CafesPromoBar />
       <Header />
       <main id="main" className="flex-1">
         <Hero />
         <MetricsRibbon />
-        <CafesLiveBanner />
         <OperatorSection />
         <WorkflowSection />
         <WorkSection />
@@ -220,143 +219,6 @@ export default function Home() {
       </main>
       <Footer />
     </>
-  );
-}
-
-/* ------------------------------ Cafes live banner -------------------------- */
-
-// Optional banner photo (a cafe interior / storefront works best). The card is
-// a clean solid dark surface by default; drop a wide ~1600×500 image at
-// public/assests/cafes-banner.jpg and it fades in as a subtle right-side
-// texture without hurting text legibility.
-const CAFES_BANNER_IMG = '/assests/cafes-banner.jpg';
-
-const CAFES_TRUST = [
-  'IIT Alumnus Built',
-  'Integrated UPI & Rider Dispatch',
-  '100% Refund Guarantee',
-];
-
-/* A "now live" showcase card that previews the dark /cafes world inside the
-   light homepage. Entire card links to /cafes; hover lifts it, warms the border
-   glow, and nudges the CTA arrow. */
-function CafesLiveBanner() {
-  return (
-    <section className="mx-auto max-w-7xl px-5 py-8 sm:px-8 sm:py-10">
-      <Link
-        href="/cafes"
-        aria-label="See cafe storefront plans and pricing — now live"
-        className="group relative block overflow-hidden rounded-2xl border border-slate-800 bg-[#0B132B] p-6 shadow-[0_10px_30px_-18px_rgba(40,36,28,0.7)] transition-all duration-300 hover:-translate-y-1 hover:border-amber-500/50 hover:shadow-[0_22px_50px_-24px_rgba(217,119,6,0.45)] md:p-8"
-      >
-        {/* Optional background texture — invisible until an image exists */}
-        <div
-          className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-[0.16] transition-transform duration-700 [mask-image:linear-gradient(to_right,transparent,transparent_45%,black)] group-hover:scale-[1.04]"
-          style={{ backgroundImage: `url(${CAFES_BANNER_IMG})` }}
-          aria-hidden
-        />
-        {/* Amber/emerald border glow on hover */}
-        <div
-          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-          style={{
-            background:
-              'radial-gradient(60% 120% at 0% 0%, rgba(217,119,6,0.18), transparent 60%), radial-gradient(60% 120% at 100% 100%, rgba(5,150,105,0.16), transparent 60%)',
-          }}
-          aria-hidden
-        />
-
-        <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between md:gap-8">
-          <div>
-            {/* Header pill row */}
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-2.5 py-1">
-                <span className="relative flex h-2 w-2" aria-hidden>
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400/80 motion-safe:animate-ping" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-                </span>
-                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-emerald-300">
-                  Now live
-                </span>
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-1">
-                <Zap className="h-3 w-3 text-amber-400" aria-hidden />
-                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-amber-300">
-                  3–5 Day Turnaround
-                </span>
-              </span>
-            </div>
-
-            {/* Headline */}
-            <h3 className="mt-4 text-balance text-2xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-white sm:text-3xl">
-              Cafe Storefronts,{' '}
-              <span className="text-amber-400">0% Commission</span>
-            </h3>
-
-            {/* Subtitle */}
-            <p className="mt-3 max-w-xl text-pretty text-[13.5px] leading-relaxed text-slate-300 sm:text-sm">
-              Direct-ordering mobile storefronts for Hyderabad cafes. Stop giving
-              away 30% aggregator margins — physical tabletop QR kit included with
-              a 3-month risk-free trial.
-            </p>
-
-            {/* Secondary trust pills (desktop) */}
-            <ul className="mt-4 hidden flex-wrap items-center gap-x-4 gap-y-2 sm:flex">
-              {CAFES_TRUST.map((t) => (
-                <li
-                  key={t}
-                  className="inline-flex items-center gap-1.5 text-[12.5px] font-medium text-slate-300"
-                >
-                  <Check className="h-3.5 w-3.5 shrink-0 text-emerald-400" aria-hidden />
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* CTA */}
-          <span className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-amber-600 px-5 py-3 font-semibold text-white shadow-lg shadow-amber-600/20 transition-colors group-hover:bg-amber-500">
-            See Cafe Plans &amp; Pricing
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </span>
-        </div>
-      </Link>
-    </section>
-  );
-}
-
-/* ------------------------------ Cafes promo bar ---------------------------- */
-
-/* Full-width "now offering" strip on the signal accent — the sale-banner
-   pattern, so the /cafes offer reads instantly on load. Kept persistently
-   reachable via the header pill below. */
-function CafesPromoBar() {
-  return (
-    <Link
-      href="/cafes"
-      className="group block w-full bg-[var(--signal)] text-white transition-colors hover:bg-[var(--signal-ink)]"
-    >
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-3 gap-y-1 px-5 py-2.5 text-center sm:px-8">
-        <span className="inline-flex items-center gap-1.5">
-          <span className="relative flex h-2 w-2" aria-hidden>
-            <span className="absolute inline-flex h-full w-full rounded-full bg-white/80 motion-safe:animate-ping" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
-          </span>
-          <span className="text-[11px] font-bold uppercase tracking-[0.18em]">
-            Now offering
-          </span>
-        </span>
-        <span className="text-[13px] font-semibold sm:text-sm">
-          Own a cafe? Launch a{' '}
-          <span className="font-bold underline decoration-white/40 underline-offset-2">
-            0% commission
-          </span>{' '}
-          direct-ordering storefront in days.
-        </span>
-        <span className="inline-flex items-center gap-1 text-[13px] font-bold underline-offset-2 group-hover:underline">
-          See cafe plans
-          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-        </span>
-      </div>
-    </Link>
   );
 }
 
@@ -452,16 +314,15 @@ function Hero() {
           <div className="mt-6 grid gap-6 sm:mt-8 lg:grid-cols-[1.2fr_1fr] lg:items-stretch lg:gap-8">
             <div>
               <h1 className="power-on po-2 text-balance text-[12vw] font-extrabold uppercase leading-[0.86] tracking-[-0.04em] text-[var(--ink)] sm:text-7xl md:text-[86px] lg:text-[92px]">
-                One engineer.
-                <br />
-                <span className="text-[var(--signal)]">Whole tech team.</span>
+                Senior Platform Engineer{' '}
+                <span className="text-[var(--signal)]">&amp; Full-Stack Architect.</span>
               </h1>
 
               <p className="power-on po-3 mt-5 max-w-xl text-pretty text-[15px] leading-relaxed text-[var(--ink-mid)] sm:mt-7 sm:text-[17px]">
-                I design, build, and launch complete websites and web apps —
-                including modern AI features like smart search and chatbots.
-                Straight talk, honest timelines, and one person you can actually
-                reach.
+                Ex-Flipkart, currently building observability systems at New
+                Relic. I partner with ambitious founders and design studios to
+                architect, build, and ship production-grade web applications and
+                high-throughput systems.
               </p>
 
               <div className="power-on po-4 mt-6 flex flex-col gap-3 sm:mt-9 sm:flex-row">
@@ -530,7 +391,12 @@ function Hero() {
 
 /* ------------------------------- Work section ----------------------------- */
 
-function WorkSection() {
+async function WorkSection() {
+  // Live projects from Supabase; fall back to the static list if Supabase is
+  // unconfigured or unreachable so the section never renders empty.
+  const published = await getPublishedProjects();
+  const projects = published && published.length > 0 ? published : PROJECTS;
+
   return (
     <section id="work" className="relative">
       <div className="mx-auto max-w-7xl px-5 pt-20 sm:px-8 sm:pt-24">
@@ -545,7 +411,7 @@ function WorkSection() {
 
       {/* No SectionFade wrapper — a transformed ancestor breaks position: sticky. */}
       <div className="mt-10 pb-20 sm:mt-12 sm:pb-24">
-        <ProjectsCarousel projects={PROJECTS} />
+        <ProjectsCarousel projects={projects} />
       </div>
     </section>
   );

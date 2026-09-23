@@ -89,30 +89,6 @@ export const PROJECTS: Project[] = [
       "https://api.microlink.io/?url=https%3A%2F%2Fkore-digital-wine.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=800",
   },
   {
-    id: "ashirwaad",
-    title: "Ashirwaad Corporate Presence Portal",
-    subtitle: "Enterprise Business Infrastructure & Frontend Interface",
-    category: "Corporate Web",
-    type: "frontend",
-    challenge:
-      "Transforming traditional corporate identity models into a modern, responsive single-page web asset characterized by sharp typographic hierarchy and zero layout shifting during asset hydration.",
-    architecture: [
-      "Component Architecture: Architected a modular, component-driven UI pattern to ensure deep codebase maintainability and seamless future expansions.",
-      "Performance Optimization: Eliminated render-blocking assets and optimized critical CSS delivery pathways to pass strict Core Web Vitals checks.",
-    ],
-    outcome:
-      "Built a high-conversion, production-ready corporate interface that elevates brand authority and delivers sub-second interaction times on mobile viewports.",
-    tags: [
-      "React",
-      "TypeScript",
-      "Clean Architecture",
-      "Core Web Vitals Componentization",
-    ],
-    liveUrl: "https://ashirwaad.netlify.app/",
-    image:
-      "https://api.microlink.io/?url=https%3A%2F%2Fashirwaad.netlify.app%2F&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=800",
-  },
-  {
     id: "monica-hirano",
     title: "Monica Hirano — Contemporary Artist Portfolio",
     subtitle: "Trilingual Institutional-Grade Visual Portfolio",
