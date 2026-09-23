@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight, Mail, Store } from 'lucide-react';
 import { PROJECTS, SKILL_TIERS } from '@/lib/projects';
-import { getPublishedProjects } from '@/lib/supabase/projects';
 import { SectionFade } from './components/SectionFade';
 import { MetricsRibbon } from './components/MetricsRibbon';
 import { ProjectsCarousel } from './components/ProjectsCarousel';
@@ -391,11 +390,8 @@ function Hero() {
 
 /* ------------------------------- Work section ----------------------------- */
 
-async function WorkSection() {
-  // Live projects from Supabase; fall back to the static list if Supabase is
-  // unconfigured or unreachable so the section never renders empty.
-  const published = await getPublishedProjects();
-  const projects = published && published.length > 0 ? published : PROJECTS;
+function WorkSection() {
+  const projects = PROJECTS;
 
   return (
     <section id="work" className="relative">
